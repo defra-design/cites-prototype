@@ -1,0 +1,45 @@
+ {% extends "./layout.html" %}
+
+ {% set thisPageTitle = "v01 prototype" %}
+
+
+ {% block pageTitle %}
+ {{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+ {% endblock %}
+
+
+ {% block beforeContent %}
+   {% include "./includes/stage-banner.html" %}
+ {% endblock %}
+
+ {% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">
+      {{ thisPageTitle }}
+    </h1>
+
+    <table class="govuk-table govuk-!-margin-bottom-9">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" width="40%" scope="col">Sprint</th>
+          <th class="govuk-table__header" scope="col" style="color: black">Scenario</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="public/agent">Sprint 9</a></td>
+          <td class="govuk-table__cell" style="color: black">Basic user journey</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "Check your answers" %}
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full-width">
+
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-8">{{ thisPageTitle }}</h1>
+
+    <!-- <h2 class="govuk-heading-m ">First block</h2> -->
+      <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">Are you applying on behalf of somebody else?</dt>
+            <dd class="app-check-your-answers__answer">{{ data['isAgent'] }}</dd>
+            <dd class="app-check-your-answers__change"><a href="are-you-applying-on-behalf-of-somebody-else">Change</a></dd>
+          </div>
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">What type of permit are you applying for?</dt>
+            <dd class="app-check-your-answers__answer">{{ data['permitType'] }}</dd>
+            <dd class="app-check-your-answers__change"><a href="what-type-of-permit-are-you-applying-for">Change</a></dd>
+          </div>
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">Are you selling your specimen?</dt>
+            <dd class="app-check-your-answers__answer">{{ data['isSelling'] }}</dd>
+            <dd class="app-check-your-answers__change"><a href="are-you-selling-your-specimen">Change</a></dd>
+          </div>
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">What is the name of your specimen?</dt>
+            <dd class="app-check-your-answers__answer">{{data['specimen-name']}}</dd>
+            <dd class="app-check-your-answers__change"><a href="what-is-the-name-of-your-specimen">Change</a></dd>
+          </div>
+      </dl>
+        <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">Is this specimen correct?</dt>
+              <dd class="app-check-your-answers__answer">{{ data['correctSpecimen'] }}</dd>
+              <dd class="app-check-your-answers__change"><a href="is-this-specimen-correct">Change</a></dd>
+            </div>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">Is the specimen alive?</dt>
+              <dd class="app-check-your-answers__answer">{{ data['isAlive'] }}</dd>
+              <dd class="app-check-your-answers__change"><a href="is-the-specimen-alive">Change</a></dd>
+            </div>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">Describe the specimen</dt>
+              <dd class="app-check-your-answers__answer">{{data['description']}}</dd>
+              <dd class="app-check-your-answers__change"><a href="description">Change</a></dd>
+            </div>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">How many of the specimens are you planning to move?</dt>
+              <dd class="app-check-your-answers__answer">{{data['total-being-moved']}}</dd>
+              <dd class="app-check-your-answers__change"><a href="how-many-of-these-specimens-are-you-planning-to-move">Change</a></dd>
+            </div>
+        </dl>
+        <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">What is the total weight of your specimen?</dt>
+              <dd class="app-check-your-answers__answer">{{data['specimen-weight']}}</dd>
+              <dd class="app-check-your-answers__change"><a href="what-is-the-total-weight-of-your-specimen">Change</a></dd>
+            </div>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">Where are you importing your specimen from?</dt>
+              <dd class="app-check-your-answers__answer">{{data['import-country']}}</dd>
+              <dd class="app-check-your-answers__change"><a href="where-are-you-importing-your-specimen-from">Change</a></dd>
+            </div>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">Who is importing the specimen?</dt>
+              <dd class="app-check-your-answers__answer">
+                    {{ data['full-name'] }}
+                <br>{{ data['address-line-1'] }}
+                <br>{{ data['address-line-2'] }}
+                <br>{{ data['address-town'] }}
+                <br>{{ data['address-county'] }}
+                <br>{{ data['address-postcode'] }}</dd>
+              <dd class="app-check-your-answers__change"><a href="who-is-importing-the-specimen">Change</a></dd>
+            </div>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">Where will you keep your specimen?</dt>
+              <dd class="app-check-your-answers__answer">
+                    {{ data['full-name'] }}
+                <br>{{ data['address-line-1'] }}
+                <br>{{ data['address-line-2'] }}
+                <br>{{ data['address-town'] }}
+                <br>{{ data['address-county'] }}
+                <br>{{ data['address-postcode'] }}</dd>
+              <dd class="app-check-your-answers__change"><a href="where-will-you-keep-your-specimen">Change</a></dd>
+            </div>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">Where did you source your specimen from?</dt>
+              <dd class="app-check-your-answers__answer">{{ data['specimenSource'] }}</dd>
+              <dd class="app-check-your-answers__change"><a href="where-did-you-source-your-specimen-from">Change</a></dd>
+            </div>
+            <div class="app-check-your-answers__contents">
+              <dt class="app-check-your-answers__question">What is the country of origin of the specimen?</dt>
+              <dd class="app-check-your-answers__answer">{{data['country-of-origin']}}</dd>
+              <dd class="app-check-your-answers__change"><a href="what-is-the-country-of-origin-of-the-specimen">Change</a></dd>
+            </div>
+        </dl>
+
+        <h2 class="govuk-heading-m ">Photos of the item</h2>
+          <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
+              <div class="app-check-your-answers__contents">
+                <dt class="app-check-your-answers__question">Your photos</dt>
+                <dd class="app-check-your-answers__answer">
+                  <ul class="govuk-list">
+                  {% for photo in data['photos'] %}
+                    <li>
+                      <img class="check-your-answers-img" src="{{baseUrl}}/photos/{{photo}}" />
+                    </li>
+                  {%  endfor %}
+                  </ul>
+                </dd>
+                <dd class="app-check-your-answers__change"><a href="your-photos">Change</a></dd>
+              </div>
+          </dl>
+    </div>
+
+
+
+<!-- LEGAL DECLARATIONS-->
+
+    <h2 class="govuk-heading-m">Legal declaration</h2>
+    <p class="govuk-body">By submitting your application, you are agreeing that the information you have provided, is correct.</p>
+
+      <!-- {% if data['ownerAgent'] == 'agent' %}
+      <p class="govuk-body">You must also agree that the owner confirms the following:</p>
+      {% else %}
+      <p class="govuk-body">Before you continue, you must agree to the following:</p>
+      {% endif %}
+ -->
+      <!-- <p class="govuk-body">By confirming, you agree that all the imformation in this application is correct.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the item was made before 3 March 1947</li>
+        <li>the item contains less than 10% ivory by volume</li>
+        <li>all the ivory in the item is integral to it</li>
+        <li>any replacement ivory was taken from an elephant before 1 January 1975</li>
+        <li>the information you’ve provided is complete and correct</li>
+      </ul>
+ -->
+
+      <div class="govuk-form-group">
+        <div class="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="legalDec" name="legalDec" type="checkbox" value="agree" required>
+            <label class="govuk-label govuk-checkboxes__label" for="legalDec">
+              I agree
+            </label>
+          </div>
+        </div>
+      </div>
+
+    <form method="post" autocomplete="off" {{ novalidateVl }}>
+      <button class="govuk-button">Agree and submit</button>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

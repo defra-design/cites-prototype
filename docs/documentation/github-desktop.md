@@ -1,7 +1,4 @@
----
-title: Store your code online with GitHub or GitHub Desktop
----
-# Store your code online with GitHub or GitHub Desktop
+# Storing your code online with GitHub and GitHub Desktop
 
 GitHub is a way to store code online so you can collaborate with other people. It also makes it easier to publish your prototype online with Heroku.
 

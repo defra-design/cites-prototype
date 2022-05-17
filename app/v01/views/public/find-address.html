@@ -1,0 +1,37 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "where-will-you-keep-your-specimen" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+  {% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" autocomplete="off">
+          <h1 class="govuk-heading-l">
+              Where will you keep your specimen?
+          </h1>
+
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="postcode">
+                Postcode
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text" value="{{data['postcode']}}">
+            </div>
+
+          </fieldset>
+
+          <button class="govuk-button">Find address</button>
+          <p><a href="/address_look_up/enter_address" >Enter the address manually</a></p>
+        </form>
+
+      </div>
+    </div>
+
+  {% endblock %}

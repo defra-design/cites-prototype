@@ -1,7 +1,4 @@
----
-title: Use backwards compatibility to upgrade from version 6
----
-# Use backwards compatibility to upgrade from version 6
+# Using backwards compatibility
 
 Version 7 of the Prototype Kit uses the new GOV.UK Design System. It is not compatible with prototypes built with older versions by default.
 

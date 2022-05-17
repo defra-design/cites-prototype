@@ -7,6 +7,7 @@
 
 const gulp = require('gulp')
 const sass = require('gulp-sass')(require('node-sass'))
+const sourcemaps = require('gulp-sourcemaps')
 const path = require('path')
 const fs = require('fs')
 
@@ -22,7 +23,8 @@ gulp.task('sass-extensions', function (done) {
 })
 
 gulp.task('sass', function () {
-  return gulp.src(config.paths.assets + '/sass/*.scss', { sourcemaps: true })
+  return gulp.src(config.paths.assets + '/sass/*.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: 'expanded' }).on('error', function (error) {
       // write a blank application.css to force browser refresh on error
       if (!fs.existsSync(stylesheetDirectory)) {
@@ -32,19 +34,23 @@ gulp.task('sass', function () {
       console.error('\n', error.messageFormatted, '\n')
       this.emit('end')
     }))
-    .pipe(gulp.dest(stylesheetDirectory, { sourcemaps: true }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(stylesheetDirectory))
 })
 
 gulp.task('sass-documentation', function () {
-  return gulp.src(config.paths.docsAssets + '/sass/*.scss', { sourcemaps: true })
+  return gulp.src(config.paths.docsAssets + '/sass/*.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
-    .pipe(gulp.dest(config.paths.public + '/stylesheets/', { sourcemaps: true }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(config.paths.public + '/stylesheets/'))
 })
 
 // Backward compatibility with Elements
 
 gulp.task('sass-v6', function () {
-  return gulp.src(config.paths.v6Assets + '/sass/*.scss', { sourcemaps: true })
+  return gulp.src(config.paths.v6Assets + '/sass/*.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'expanded',
       includePaths: [
@@ -53,5 +59,6 @@ gulp.task('sass-v6', function () {
         'node_modules/govuk_template_jinja/assets/stylesheets'
       ]
     }).on('error', sass.logError))
-    .pipe(gulp.dest(config.paths.public + '/v6/stylesheets/', { sourcemaps: true }))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(config.paths.public + '/v6/stylesheets/'))
 })

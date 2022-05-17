@@ -1,3 +1,0 @@
-# cites-prototype
-
-Test
