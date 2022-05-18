@@ -40,11 +40,35 @@ router.get('/are-you-applying-on-behalf-of-somebody-else', function (req, res) {
 router.post('/are-you-applying-on-behalf-of-somebody-else', function (req, res) {
   let isAgent = req.session.data['isAgent']
   if (isAgent === 'yes') {
-    res.redirect('upload-agent-authorisation')
+    res.redirect('interuption-agent')
   } else {
     res.redirect('what-type-of-permit-are-you-applying-for')
   }
 })
+
+// Is the owner a UK resident
+router.get('/is-the-owner-a-UK-resident', function (req, res) {
+  res.render(viewsFolder + 'is-the-owner-a-UK-resident')
+})
+
+router.post('/is-the-owner-a-UK-resident', function (req, res) {
+  let isUK = req.session.data['isUK']
+  if (isUK === 'yes') {
+    res.redirect('interuption-agent')
+  } else {
+    res.redirect('interuption-agent')
+  }
+})
+
+// Inperuptioon - Agent
+router.get('/interuption-agent', function (req, res) {
+  res.render(viewsFolder + 'interuption-agent')
+})
+
+router.post('/interuption-agent', function (req, res) {
+  res.redirect('what-type-of-permit-are-you-applying-for')
+})
+
 
 // Permit type
 router.get('/what-type-of-permit-are-you-applying-for', function (req, res) {
