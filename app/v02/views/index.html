@@ -1,91 +1,76 @@
- {% extends "./layout.html" %}
+{% extends "./layout.html" %}
 
- {% set thisPageTitle = "Cites v02 prototypes" %}
-
-
- {% block pageTitle %}
- {{ thisPageTitle }} - {{ serviceName }} - GOV.UK
- {% endblock %}
+{% set thisPageTitle = "CITES prototypes" %}
 
 
- {% block beforeContent %}
-   {% include "./includes/stage-banner.html" %}
- {% endblock %}
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
 
- {% block content %}
+
+{% block beforeContent %}
+  {% include ".//includes/stage-banner.html" %}
+{% endblock %}
+
+{% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-xl">
-      {{ thisPageTitle }}
-    </h1>
+      <h1 class="govuk-heading-l">
+        {{ thisPageTitle }}
+      </h1>
 
-    <!-- <table class="govuk-table govuk-!-margin-bottom-9">
-      <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" width="40%" scope="col">APHA (Backstage)</th>
-        <th class="govuk-table__header" scope="col">Description</th>
-      </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell"><a href="apha/registrations">Ivory Register</a></td>
-        <td class="govuk-table__cell">Service for APHA users</td>
-      </tr>
-      </tbody>
-    </table> -->
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key" style="width: 15%">
+              Version
+            </dt>
+            <dd class="govuk-summary-list__key">
+              Changes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+            </dd>
+          </div>
 
-    <table class="govuk-table govuk-!-margin-bottom-9">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header" width="40%" scope="col">Importing items</th>
-          <th class="govuk-table__header" scope="col" style="color: white">Scenario</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
+          <div class="govuk-summary-list__row" style="background: lightgrey">
+            <dt class="govuk-summary-list__key" style="width: 15%; padding-top: 20px; padding-bottom: 20px">
+              v01
+            </dt>
+            <dd class="govuk-summary-list__value" style="padding-top: 20px; padding-bottom: 20px">
+              <h2 class="govuk-heading-s">First version</h2>
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>Question pages</li>
+                    </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-button" href="/v01/public/are-you-applying-on-behalf-of-somebody-else">
+                View prototype<span class="govuk-visually-hidden"></span>
+              </a>
+            </dd>
+          </div>
 
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="public/guidance-new">Importing</a></td>
-          <td class="govuk-table__cell" style="color: white">importing</td>
-        </tr>
+          <div class="govuk-summary-list__row"">
+            <dt class="govuk-summary-list__key" style="width: 15%; padding-top: 20px; padding-bottom: 20px">
+              v02
+            </dt>
+            <dd class="govuk-summary-list__value" style="padding-top: 20px; padding-bottom: 20px">
+              <h2 class="govuk-heading-s">Agent flow</h2>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>Interrupt page</li>
+                      <li>Contact details</li>
+                      <li>Owner's consent</li>
+                    </ul>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="/v02/public/are-you-applying-on-behalf-of-somebody-else">
+                View prototype<span class="govuk-visually-hidden"></span>
+              </a>
+            </dd>
+          </div>
 
-        <!-- <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="public/guidance-new">Test 2</a></td>
-          <td class="govuk-table__cell" style="color: white">Reworked guidance > Eligibility checker > Halt pages > Service</td>
-        </tr> -->
 
-        <!-- <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="public/gumtree-sell">Sell on Gumtree</a></td>
-          <td class="govuk-table__cell">Online interrupt message for sellers</td>
-        </tr> -->
-
-      </tbody>
-    </table>
-
-    <!-- <table class="govuk-table govuk-!-margin-bottom-9">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header" width="40%" scope="col">Buying ivory items (Out of scope)</th>
-          <th class="govuk-table__header" scope="col">Scenario</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="public/check-before-you-buy-an-ivory-item">Check before buying an ivory item</a></td>
-          <td class="govuk-table__cell">e.g. Google search for "buying ivory items"</td>
-        </tr>
-
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a href="public/gumtree-buy">Buy on Gumtree</a></td>
-          <td class="govuk-table__cell">Online interrupt message for buyers</td>
-        </tr>
-
-      </tbody>
-    </table> -->
-
-  </div>
+    </div>
 </div>
 
 

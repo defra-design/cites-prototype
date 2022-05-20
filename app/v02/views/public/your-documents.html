@@ -1,7 +1,7 @@
 {% set pageTitle = "Your documents" %}
 
 {% extends "./layout.html" %}
-{% from "summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {% block pageTitle %}
 {{ pageTitle }} - {{ serviceName }} - GOV.UK
@@ -16,7 +16,7 @@
 
       <h1 class="govuk-heading-l govuk-!-margin-bottom-8">Your documents</h1>
 
-      <p class="govuk-body">You can add up to 6 documents.</p>
+      <p class="govuk-body">You can add up to 2 documents.</p>
 
         <dl class="govuk-summary-list ">
           <div class="govuk-summary-list__row">

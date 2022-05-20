@@ -15,7 +15,6 @@ const exemptionTypeText4 = 'Item to be sold or hired out to a qualifying museum'
 const exemptionTypeText5 = 'Item made before 1918 that has outstandingly high artistic, cultural or historical value'
 
 
-
 /// ///////////////////////////////////////////////////////////////////////////
 // LOGGER (not great, but may help)
 function logger (req, msg) {
@@ -27,7 +26,275 @@ function logger (req, msg) {
 
 
 
+////// Start of CITES code /////
+// Cites GUIDANCE
+router.get('/guidance-cites', function (req, res) {
+  res.render(viewsFolder + 'guidance-cites')
+})
 
+// Are you applying on behalf of somebody else
+router.get('/are-you-applying-on-behalf-of-somebody-else', function (req, res) {
+  res.render(viewsFolder + 'are-you-applying-on-behalf-of-somebody-else')
+})
+
+router.post('/are-you-applying-on-behalf-of-somebody-else', function (req, res) {
+    res.redirect('is-the-owner-a-uk-resident')
+})
+
+// Is the owner a UK resident
+router.get('/is-the-owner-a-uk-resident', function (req, res) {
+  res.render(viewsFolder + 'is-the-owner-a-UK-resident')
+})
+
+router.post('/is-the-owner-a-uk-resident', function (req, res) {
+  let isUK = req.session.data['isUK']
+  if (isUK === 'yes') {
+    res.redirect('interuption-owner-is-uk-resident')
+  } else {
+    res.redirect('interuption-owner-is-non-uk-resident')
+  }
+})
+
+// Inperuptioon - UK resident
+router.get('/interuption-owner-is-uk-resident', function (req, res) {
+  res.render(viewsFolder + 'interuption-owner-is-uk-resident')
+})
+
+router.post('/interuption-owner-is-uk-resident', function (req, res) {
+  res.redirect('enter-your-contact-details')
+})
+
+// Inperuptioon - Non-UK resident
+router.get('/interuption-owner-is-non-uk-resident', function (req, res) {
+  res.render(viewsFolder + 'interuption-owner-is-non-uk-resident')
+})
+
+router.post('/interuption-owner-is-non-uk-resident', function (req, res) {
+  res.redirect('owner-consent')
+})
+
+// Enter your contact details
+router.get('/enter-your-contact-details', function (req, res) {
+  res.render(viewsFolder + 'enter-your-contact-details')
+})
+
+router.post('/enter-your-contact-details', function (req, res) {
+  res.redirect('owner-consent')
+})
+
+
+// Owner-consent
+router.get('/owner-consent', function (req, res) {
+  res.render(viewsFolder + 'owner-consent')
+})
+
+router.post('/owner-consent', function (req, res) {
+  res.redirect('what-type-of-permit-are-you-applying-for')
+})
+
+
+// What type of permit are you applying for
+router.get('/what-type-of-permit-are-you-applying-for', function (req, res) {
+  res.render(viewsFolder + 'what-type-of-permit-are-you-applying-for')
+})
+
+router.post('/what-type-of-permit-are-you-applying-for', function (req, res) {
+  let permitType = req.session.data['permitType']
+  if (permitType === 'import') {
+    res.redirect('are-you-selling-your-specimen')
+  }
+  if (permitType === 'export') {
+    res.redirect('are-you-selling-your-specimen')
+  }
+  if (permitType === 're-export') {
+    res.redirect('are-you-selling-your-specimen')
+  }
+})
+
+// Are you selling your specimen
+router.get('/are-you-selling-your-specimen', function (req, res) {
+  res.render(viewsFolder + 'are-you-selling-your-specimen')
+})
+
+router.post('/are-you-selling-your-specimen', function (req, res) {
+  let isSelling = req.session.data['isSelling']
+  if (isSelling === 'selling') {
+    res.redirect('what-is-the-name-of-your-specimen')
+  } else {
+    res.redirect('what-is-the-name-of-your-specimen')
+  }
+})
+
+
+// What is the name of your specimen
+router.get('/what-is-the-name-of-your-specimen', function (req, res) {
+  res.render(viewsFolder + 'what-is-the-name-of-your-specimen')
+})
+
+router.post('/what-is-the-name-of-your-specimen', function (req, res) {
+  res.redirect('is-this-specimen-correct')
+})
+
+// Is this specimen correct
+router.get('/is-this-specimen-correct', function (req, res) {
+  res.render(viewsFolder + 'is-this-specimen-correct')
+})
+
+router.post('/is-this-specimen-correct', function (req, res) {
+  let correctSpecimen = req.session.data['correctSpecimen']
+  if (correctSpecimen === 'yes') {
+    res.redirect('is-the-specimen-alive')
+  } else {
+    res.redirect('what-is-the-name-of-your-specimen')
+  }
+})
+
+// Is the specimen alive
+router.get('/is-the-specimen-alive', function (req, res) {
+  res.render(viewsFolder + 'is-the-specimen-alive')
+})
+
+router.post('/is-the-specimen-alive', function (req, res) {
+  let isAlive = req.session.data['isAlive']
+
+  if (isAlive === 'yes') {
+    res.redirect('description')
+  } else {
+    res.redirect('description')
+  }
+})
+
+// Describe the specimen
+router.get('/description', function (req, res) {
+  res.render(viewsFolder + 'description')
+})
+
+router.post('/description', function (req, res) {
+  res.redirect('how-many-of-these-specimens-are-you-planning-to-move')
+})
+
+// How many of these specimens are you planning to move
+router.get('/how-many-of-these-specimens-are-you-planning-to-move', function (req, res) {
+  res.render(viewsFolder + 'how-many-of-these-specimens-are-you-planning-to-move')
+})
+
+router.post('/how-many-of-these-specimens-are-you-planning-to-move', function (req, res) {
+  res.redirect('what-is-the-total-weight-of-your-specimen')
+})
+
+// What is the total weight of your specimen
+router.get('/what-is-the-total-weight-of-your-specimen', function (req, res) {
+  res.render(viewsFolder + 'what-is-the-total-weight-of-your-specimen')
+})
+
+router.post('/what-is-the-total-weight-of-your-specimen', function (req, res) {
+  res.redirect('where-are-you-importing-your-specimen-from')
+})
+
+// Where are you importing your specimen from
+router.get('/where-are-you-importing-your-specimen-from', function (req, res) {
+  res.render(viewsFolder + 'where-are-you-importing-your-specimen-from')
+})
+
+router.post('/where-are-you-importing-your-specimen-from', function (req, res) {
+  res.redirect('who-is-importing-the-specimen')
+})
+
+// Who is importing the specimen
+router.get('/who-is-importing-the-specimen', function (req, res) {
+  res.render(viewsFolder + 'who-is-importing-the-specimen')
+})
+
+router.post('/who-is-importing-the-specimen', function (req, res) {
+  res.redirect('where-will-you-keep-your-specimen')
+})
+
+// Where will you keep your specimen
+router.get('/where-will-you-keep-your-specimen', function (req, res) {
+  res.render(viewsFolder + 'where-will-you-keep-your-specimen')
+})
+
+router.post('/where-will-you-keep-your-specimen', function (req, res) {
+  res.redirect('where-did-you-source-your-specimen-from')
+})
+
+// Where did you source the specimen from
+router.get('/where-did-you-source-your-specimen-from', function (req, res) {
+  res.render(viewsFolder + 'where-did-you-source-your-specimen-from')
+})
+
+router.post('/where-did-you-source-your-specimen-from', function (req, res) {
+  let specimenSource = req.session.data['specimenSource']
+
+  if (specimenSource === 'source1') {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+} else if (specimenSource === 'source2') {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+} else if (specimenSource === 'source3') {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+} else if (specimenSource === 'source4') {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+} else if (specimenSource === 'source5') {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+} else if (specimenSource === 'source6') {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+} else if (specimenSource === 'source7') {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+} else if (specimenSource === 'source8') {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+} else if (specimenSource === 'source9') {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+} else if (specimenSource === 'source10') {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+} else {
+  res.redirect('what-is-the-country-of-origin-of-the-specimen')
+}
+
+})
+
+// What is the country of origin of the specimen
+router.get('/what-is-the-country-of-origin-of-the-specimen', function (req, res) {
+  res.render(viewsFolder + 'what-is-the-country-of-origin-of-the-specimen')
+})
+
+router.post('/what-is-the-country-of-origin-of-the-specimen', function (req, res) {
+  res.redirect('check-your-answers')
+})
+
+// Find address
+router.get('/find-address', function (req, res) {
+  res.render(viewsFolder + 'find-address')
+})
+
+router.post('/find-address', function (req, res) {
+  res.redirect('next page')
+})
+
+// Upload agent authourisation
+router.get('/upload-agent-authorisation', function (req, res) {
+  res.render(viewsFolder + 'upload-agent-authorisation')
+})
+
+router.post('/upload-agent-authorisation', function (req, res) {
+  res.redirect('your-documents')
+})
+
+// Your documents
+router.get('/your-documents', function (req, res) {
+  res.render(viewsFolder + 'your-documents')
+})
+
+router.post('/your-documents', function (req, res) {
+  res.redirect('what-type-of-permit-are-you-applying-for')
+})
+
+// Upload document
+router.get('/add-photo', function (req, res) {
+  res.render(viewsFolder + 'add-photo')
+})
+
+
+////// End of CITES code /////
 
 
 
@@ -890,8 +1157,9 @@ router.get('/check-your-answers', function (req, res) {
 })
 
 router.post('/check-your-answers', function (req, res) {
+  res.redirect('confirmation')
   // res.redirect('declaration');
-  res.redirect('govpay-lookalike-1')
+//  res.redirect('govpay-lookalike-1')
 })
 
 
@@ -1917,6 +2185,9 @@ router.post('/legal-haltpage', function (req, res) {
 // INTERNATIONAL ADDRESS
 router.get('/international-address', function (req, res) {
   res.render(viewsFolder + 'international-address')
+})
+router.post('/international-address', function (req, res) {
+  res.redirect('where-will-you-keep-your-specimen')
 })
 
 // AGENT ADDRESS CONFIRM
