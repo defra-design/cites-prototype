@@ -1,0 +1,32 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "what-is-the-country-of-origin-of-the-specimen" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+        <h1 class="govuk-heading-l">
+            What is the country of origin of the specimen?
+        </h1>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="import-country">Country</label>
+              <input class="govuk-input govuk-input--width-20" id="import-country" name="country-of-origin" type="text" value="{{data['country-of-origin']}}" required/>
+        </div>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

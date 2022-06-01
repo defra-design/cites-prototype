@@ -1,0 +1,44 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "where-are-you-importing-your-specimen-from" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+        <h1 class="govuk-heading-l">
+            Where are you importing your specimen from?
+        </h1>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="import-country">Country</label>
+              <input class="govuk-input govuk-input--width-20" id="import-country" name="import-country" type="text" value="{{data['import-country']}}" />
+        </div>
+
+<!-- Example ay selfservice input prefix example - needs pay self service styling
+         <div class="currency-input form-group">
+           <label class="form-label-bold" for="payment-amount">
+             Payment amount
+             <span class="visually-hidden">in &pound;</span>
+           </label>
+           <div class="currency-input__inner">
+             <span class="currency-input__inner__unit">&pound;</span>
+             <input id="prototyping__links-input-amount" class="form-control form-control-1-4 " aria-label="Enter amount in pounds" name="payment-amount" data-non-numeric type="text" id="payment-amount" value="{{paymentAmount}}"  data-validate="required currency belowMaxAmount">
+           </div>
+         </div> -->
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

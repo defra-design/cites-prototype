@@ -1,0 +1,86 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "who-is-importing-the-specimen" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" autocomplete="off" {{ novalidateVal }}>
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Who is importing the specimen?
+          </h1>
+        </legend>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="full-name">
+            Full name
+          </label>
+          <input class="govuk-input" id="full-name" name="full-name" type="text" spellcheck="false" autocomplete="name" value="{{data['importer-full-name']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="telephone-number">
+            UK telephone number
+          </label>
+          <input class="govuk-input govuk-input--width-20" id="telephone-number" name="telephone-number" type="tel" autocomplete="tel" value="{{data['importer-telephone-number']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="importer-address-line-1">
+            Address line 1
+          </label>
+          <input class="govuk-input" id="importer-address-line-1" name="importer-address-line-1" type="text" autocomplete="address-line1" value="{{data['importer-address-line-1']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="importer-address-line-2">
+            Address line 2 (optional)
+          </label>
+          <input class="govuk-input" id="importer-address-line-2" name="importer-address-line-2" type="text" autocomplete="address-line2"  value="{{data['importer-address-line-2']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="importer-address-town">
+            Town or city
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="importer-address-town" type="text" autocomplete="address-level2" value="{{data['importer-address-town']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="importer-address-county">
+            County (optional)
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="importer-address-county" name="importer-address-county" type="text" value="{{data['importer-address-county']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="importer-address-postcode">
+            Postcode
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="importer-address-postcode" name="importer-address-postcode" type="text" autocomplete="postal-code" value="{{data['importer-address-postcode']}}">
+        </div>
+
+      </fieldset>
+
+        <button class="govuk-button">Continue</button>
+
+        <p class="govuk-body"><a href="international-address">The address is outside the UK</a></p>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
