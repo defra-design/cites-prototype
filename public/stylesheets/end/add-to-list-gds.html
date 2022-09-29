@@ -1,0 +1,71 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "add-to-a-list" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+
+<body>
+  <div class="container">
+    <div class="todoBlock">
+      <!-- main title holder -->
+      <div class="titleHolder">
+        <h1>Add to List</h1>
+      </div>
+      <!-- todo list -->
+      <div class="todoList">
+        <!-- list holder -->
+        <div class="listHolder">
+          <ul class="list">
+            <li>
+              <span class="listName">Macbook</span>
+              <!--
+              <button class="btn-icon remove"></button>
+              <button class="btn-icon down"></button>
+              <button class="btn-icon up"></button>
+              -->
+            </li>
+            <li>
+              <span class="listName">Amazon Firestick</span>
+            </li>
+            <li>
+              <span class="listName">Keyboard</span>
+            </li>
+            <li>
+              <span class="listName">Headphones</span>
+            </li>
+            <li>
+              <span class="listName">Airpods</span>
+            </li>
+          </ul>
+        </div>
+        <!-- form holder -->
+        <div class="formHolder">
+          <div class="col big">
+            <input type="text" id="addInput">
+          </div>
+          <div class="col">
+            <button type="button" id="addBtn" class="btn-primary">Add Item</button>
+          </div>
+          <div class="col">
+            <button type="button" id="toggleBtn" class="btn-primary">Hide List</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- importing custom js -->
+  <script src="js/main.js"></script>
+
+
+  {% endblock %}
