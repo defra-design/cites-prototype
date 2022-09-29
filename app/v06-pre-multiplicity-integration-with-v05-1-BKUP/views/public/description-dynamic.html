@@ -1,0 +1,385 @@
+{% extends "./layout.html" %}
+
+{% set thisPageTitle = "description-dynamic" %}
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<!-- (except coral or tortoise) -->
+{% if data['specimen'] != 'Coral'%}
+{% if data['specimen'] != 'Tortoise'%}
+{% if data['specimenType'] === 'animal' %}
+{% if data['isAlive'] === 'alive'%}
+<form method="post" autocomplete="off">
+  <fieldset class="govuk-fieldset">
+    <span class="govuk-caption-l">{{data['species-name-1']}}</span>
+      <h1 class="govuk-heading-l">
+        Tell us about the specimen
+      </h1>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="specimen-gender">
+          What is the specimen's gender?
+        </label>
+        <!-- <input class="govuk-input govuk-input--width-10" id="specimen-gender" name="specimen-gender" type="text" spellcheck="false" autocomplete="specimen-gender" value="{{data['specimen-gender']}}"> -->
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="specimen-gender-1" name="specimen-gender" type="radio" value="F">
+            <label class="govuk-label govuk-radios__label" for="specimen-gender-1">
+              Female
+            </label>
+          </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="specimen-gender-2" name="specimen-gender" type="radio" value="M">
+          <label class="govuk-label govuk-radios__label" for="specimen-gender-2">
+            Male
+          </label>
+        </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="specimen-gender-3" name="specimen-gender" type="radio" value="U">
+        <label class="govuk-label govuk-radios__label" for="specimen-gender-3">
+          Unknown
+        </label>
+      </div>
+    </div>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="closed-ring-number">
+          Closed ring number or microchip
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="closed-ring-number" name="closed-ring-number" type="text" spellcheck="false" autocomplete="closed-ring-number" value="{{data['closed-ring-number']}}">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="hatch-birth-date">
+          Hatch or birth date
+        </label>
+        <div id="hatch-date-hint" class="govuk-hint">
+          For example, 27 3 2007
+        </div>
+      </div>
+
+        <div class="govuk-form-group">
+        <div class="govuk-date-input" id="hatch-date">
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="hatch-date-day">
+                Day
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hatch-date-day" name="hatch-date-day" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="hatch-date-month">
+                Month
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hatch-date-month" name="hatch-date-month" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="hatch-date-year">
+                Year
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="hatch-date-year" name="hatch-date-year" type="text" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-form-group">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="200">
+            <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="word-count">
+              Add any other information
+            </label>
+            </h2>
+            <p>Include anything else that helps to describe the specimen.</p>
+            <textarea class="govuk-textarea govuk-js-character-count" id="word-count" name="comment" rows="10" aria-describedby="word-count-info" value="{{data['comment']}}"></textarea>
+          <div id="word-count-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+            You can enter up to 200 words
+          </div>
+      </div>
+    </div>
+      {% else %}
+      <form method="post" autocomplete="off">
+        <span class="govuk-caption-l">{{data['species-name-1']}}</span>
+        <h1 class="govuk-heading-l">
+          Tell us about the specimen
+        </h1>
+        <h2 class="govuk-heading-m">
+          {{data['species-name-1']}}
+        </h2>
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="imported-via">
+                Where did you import the specimen via?
+              </label>
+            <input class="govuk-input" id="imported-via" name="imported-via" type="text" spellcheck="false" autocomplete="imported-via" value="{{data['imported-via']}}">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="permit-number">
+                What is the permit number?
+              </label>
+            <input class="govuk-input govuk-input--width-20" id="permit-number" name="permit-number" type="text" spellcheck="false" autocomplete="permit-number" value="{{data['permit-number']}}">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="permit-issue-date">
+                When was the permit issued?
+              </label>
+              <div id="permit-issued-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div>
+
+              <div class="govuk-form-group">
+              <div class="govuk-date-input" id="permit-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="permit-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="permit-issued-day" name="permit-issued-day" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="permit-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="permit-issued-month" name="permit-issued-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="permit-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="permit-issued-year" name="permit-issued-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="govuk-form-group">
+              <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="200">
+                  <h2 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--m" for="word-count">
+                    Add any other information
+                  </label>
+                  </h2>
+                  <p>Include anything else that helps to describe the specimen.</p>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="word-count" name="comment" rows="10" aria-describedby="word-count-info" value="{{data['comment']}}"></textarea>
+                <div id="word-count-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+                  You can enter up to 200 words
+                </div>
+            </div>
+          </div>
+          </div>
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+
+<!-- Coral alive -->
+{% if data['specimenType'] === 'animal' and data['specimen'] === 'Coral'%}
+  <form method="post" autocomplete="off">
+    <span class="govuk-caption-l">{{data['species-name-1']}}</span>
+    <h1 class="govuk-heading-l">
+        Enter the number of pieces or the weight in Kg
+    </h1>
+    <fieldset class="govuk-fieldset">
+    <div class="govuk-form-group">
+        <!-- <label class="govuk-label" for="specimen-weight">Enter number or pieces or the weight in Kg</label> -->
+          <input class="govuk-input govuk-input--width-4" id="specimen-weight" name="specimen-weight" type="text" value="{{data['specimen-weight']}}" />
+    </div>
+{% endif %}
+
+<!-- Tortoise  dead-->
+{% if data['specimen'] === 'Tortoise'%}
+{% if data['isAlive'] === 'dead'%}
+<form method="post" autocomplete="off">
+    <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="500">
+      <span class="govuk-caption-l">{{data['species-name-1']}}</span>
+      <h1 class="govuk-heading-l">
+        <label class="govuk-label govuk-label--l" for="word-count">
+        Describe the specimen
+        </label>
+      </h1>
+      <textarea class="govuk-textarea govuk-js-character-count" id="word-count" name="word-count" rows="10" aria-describedby="word-count-info" value="{{data['plants-description']}}"></textarea>
+      <div id="word-count-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+        You can enter up to 500 words
+      </div>
+    </div>
+      <br>
+{% endif %}
+{% endif %}
+
+
+<!-- Tortoise  alive-->
+{% if data['specimenType'] === 'animal' and data['specimen'] === 'Tortoise'%}
+{% if data['isAlive'] === 'alive'%}
+{% if data['plastron'] === 'yes' %}
+<form method="post" autocomplete="off">
+  <fieldset class="govuk-fieldset">
+    <span class="govuk-caption-l">{{data['species-name-1']}}</span>
+      <h1 class="govuk-heading-l">
+        Tell us about the specimen
+      </h1>
+      <div class="govuk-form-group">
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="specimen-gender-1" name="specimen-gender" type="radio" value="F">
+          <label class="govuk-label govuk-radios__label" for="specimen-gender-1">
+            Female
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="specimen-gender-2" name="specimen-gender" type="radio" value="M">
+          <label class="govuk-label govuk-radios__label" for="specimen-gender-2">
+            Male
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="specimen-gender-3" name="specimen-gender" type="radio" value="U">
+          <label class="govuk-label govuk-radios__label" for="specimen-gender-3">
+            Unknown
+          </label>
+        </div>
+      </div>
+    </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="closed-ring-number">
+          Closed ring number or microchip
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="closed-ring-number" name="closed-ring-number" type="text" spellcheck="false" autocomplete="closed-ring-number" value="{{data['closed-ring-number']}}">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="hatch-birth-date">
+          Hatch or birth date
+        </label>
+        <div id="hatch-date-hint" class="govuk-hint">
+          For example, 27 3 2007
+        </div>
+      </div>
+
+        <div class="govuk-form-group">
+        <div class="govuk-date-input" id="hatch-date">
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="hatch-date-day">
+                Day
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hatch-date-day" name="hatch-date-day" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="hatch-date-month">
+                Month
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hatch-date-month" name="hatch-date-month" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="hatch-date-year">
+                Year
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="hatch-date-year" name="hatch-date-year" type="text" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-form-group">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="200">
+            <h2 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--m" for="word-count">
+              Add any other information
+            </label>
+            </h2>
+            <p>Include anything else that helps to describe the specimen.</p>
+            <textarea class="govuk-textarea govuk-js-character-count" id="word-count" name="comment" rows="10" aria-describedby="word-count-info" value="{{data['comment']}}"></textarea>
+          <div id="word-count-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+            You can enter up to 200 words
+          </div>
+      </div>
+    </div>
+{% else %}
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+  <h1 class="govuk-fieldset__heading">
+    When was the specimen's hatch date?
+  </h1>
+</legend>
+  <fieldset class="govuk-fieldset">
+      <div id="hatch-date-hint" class="govuk-hint">
+        For example, 27 3 2007
+      </div>
+      <div class="govuk-date-input" id="hatch-date">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="hatch-date-day">
+              Day
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hatch-date-day" name="hatch-date-day" type="text" inputmode="numeric">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="hatch-date-month">
+              Month
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hatch-date-month" name="hatch-date-month" type="text" inputmode="numeric">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="hatch-date-year">
+              Year
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="hatch-date-year" name="hatch-date-year" type="text" inputmode="numeric">
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+      {% endif %}
+    {% endif %}
+
+<!-- Plants -->
+{% if data['specimenType'] === 'plant' %}
+    <form method="post" autocomplete="off">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxwords="500">
+          <span class="govuk-caption-l">{{data['species-name-1']}}</span>
+          <h1 class="govuk-heading-l">
+            <label class="govuk-label govuk-label--l" for="word-count">
+            Describe the specimen
+            </label>
+          </h1>
+          <textarea class="govuk-textarea govuk-js-character-count" id="word-count" name="word-count" rows="10" aria-describedby="word-count-info" value="{{data['plants-description']}}"></textarea>
+          <div id="word-count-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+            You can enter up to 500 words
+          </div>
+        </div>
+          <br>
+{% endif %}
+
+        </fieldset>
+        <button class="govuk-button">Continue</button>
+    </div>
+  </div>
+
+
+{% endblock %}

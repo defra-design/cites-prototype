@@ -1,0 +1,48 @@
+
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "application-complete" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-6">
+        <h1 class="govuk-panel__title">Application complete</h1>
+        <div class="govuk-panel__body">
+          Reference number
+          <br><strong>4HCP37NL</strong>
+        </div>
+      </div>
+
+      <!-- <p class="govuk-body"><a href="/public/files/Confirmation.pdf" download">Download details of this self-assessment</a></p> -->
+
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+        <p class="govuk-body">Your application will now be assessed.</p>
+        <p class="govuk-body">We will assess your application and contact you if we need any more information.</p>
+
+      <a href="#" role="button" draggable="false" class="govuk-button govuk-!-margin-top-2 govuk-!-margin-bottom-8" data-module="govuk-button">Finish</a>
+
+
+
+
+
+      <p class="govuk-body invisible-link">
+            <a href="confirmation-email" class="govuk-link">View confirmation email</a>
+      </p>
+
+
+    </div>
+  </div>
+
+
+{% endblock %}

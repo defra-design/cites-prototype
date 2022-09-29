@@ -1,0 +1,155 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "description-animal" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Describe the specimen
+        </h1>
+      </legend>
+
+    <form method="post" class="form">
+          <h2 class="govuk-heading-m">Animal 3 of 3</h2>
+
+          <!-- <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+              <h2 class="govuk-heading-m">Year 1</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+              <h2 class="govuk-heading-m">Year 2</h2>
+            </div>
+            <div class="govuk-grid-column-one-third">
+              <h2 class="govuk-heading-m">Year 3</h2>
+            </div>
+          </div> -->
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third govuk-form-group">
+              <label class="govuk-label" for="costs">
+                Gender
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="staffing" name="staffing-1"  value="{{ data['staffing-1'] }}"type="number" autocomplete="text">
+            </div>
+            <div class="govuk-grid-column-one-third govuk-form-group">
+              <label class="govuk-label" for="costs">
+                Ring number or microchip
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="staffing" name="staffing-2"  value="{{ data['staffing-2'] }}"type="number" autocomplete="text">
+            </div>
+            <div class="govuk-grid-column-one-third govuk-form-group">
+              <div class="govuk-date-input" id="hatched-date">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="hatched-date-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hatched-date-day" name="hatched-date-day" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="hatched-date-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hatched-date-month" name="hatched-date-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="hatched-date-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="hatched-date-year" name="hatched-date-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-full">
+                <div class="govuk-button-group">
+                  <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Add to list
+                  </button>
+                </div>
+              </div>
+            </div>
+  <!-- End one third content -->
+
+  <!-- Start two-thirds content -->
+
+<hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+<!-- <h2 class="govuk-heading-s">Animal 1</h2>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <p>Gender</p>
+    </div>
+  <div class="govuk-grid-column-one-quarter">
+    <p>Closed ring number</p>
+  </div>
+  <div class="govuk-grid-column-one-quarter">
+    <p>Hatch date</p>
+  </div>
+  <div class="govuk-grid-column-one-quarter">
+    <p><a href="#">Change</a></p>
+  </div>
+</div> -->
+
+    <h2 class="govuk-heading-m">Animal 1</h2>
+    <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-4">
+      <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+            Gender
+            <br>Closed ring number
+            <br>Hatched date
+      </dt>
+      <dd class="app-check-your-answers__answer"> Male
+        {{ data['gender'] }}
+        <br>{{ data['closed-ring-number'] }} 12345678
+        <br>{{ data['hatched-date-day'] }} {{ data['hatched-date-month'] }} {{ data['hatched-date-year'] }} 14 2 2001
+      </dd>
+      <dd class="app-check-your-answers__change"><a href="#">Change</a></dd>
+    </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">Animal 2</h2>
+    <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-4">
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+            Gender
+        <br>Closed ring number
+        <br>Hatch date
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        {{ data['gender'] }} Female
+        <br>{{ data['closed-ring-number'] }} 22222222
+        <br>{{ data['hatched-date-day'] }} {{ data['hatched-date-month'] }} {{ data['hatched-date-year'] }} 3 11 1990
+      </dd>
+      <dd class="app-check-your-answers__change"><a href="#">Change</a></dd>
+    </div>
+    </dl>
+
+    <button class="govuk-button" data-module="govuk-button">
+      Save and continue
+    </button>
+
+    <!-- End two-thirds content -->
+  </form>
+</div>
+</div>
+
+
+  {% endblock %}

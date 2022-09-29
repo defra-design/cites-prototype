@@ -1,0 +1,38 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "how-many-specimens" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+        <h1 class="govuk-heading-l">
+            How many specimens of the species will be imported?
+        </h1>
+        <div class="govuk-form-group">
+          <span class="govuk-caption-l">{{data['species-name-1']}}</span>
+          <label class="govuk-label" for="total-specimens-1">Enter the total number of specimens.</label>
+          <input class="govuk-input govuk-input--width-3" id="howMany1" name="totalSpecimens1" type="number" value="{{data['totalSpecimens1']}}" />
+        </div>
+        <div class="govuk-form-group">
+          <span class="govuk-caption-l">{{data['species-name-2']}}</span>
+          <label class="govuk-label" for="total-specimens-2">Enter the total number of specimens.</label>
+          <input class="govuk-input govuk-input--width-3" id="total-specimens-2" name="totalSpecimens2" type="number" value="{{data['totalSpecimens2']}}" />
+        </div>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

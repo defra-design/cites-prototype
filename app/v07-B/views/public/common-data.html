@@ -1,0 +1,562 @@
+{% extends "./layout.html" %}
+
+{% set thisPageTitle = "common-data" %}
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+
+{% endblock %}
+
+<link rel="stylesheet" href="../dist/location-autocomplete.min.css" />
+<style>
+  html {
+    color: #111;
+    background: #FFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  body {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: normal;
+  }
+
+  label {
+    display: block;
+    margin-bottom: .5rem;
+  }
+
+  code {
+    padding-left: .5em;
+    padding-right: .5em;
+    background: #EFEFEF;
+    font-weight: normal;
+    font-family: monospace;
+  }
+
+  main {
+    max-width: 25em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .autocomplete-wrapper {
+    max-width: 20em;
+    margin-bottom: 4rem;
+  }
+</style>
+{% block content %}
+
+<link rel="stylesheet" href="/public/stylesheets/accessible-autocomplete.min.css">
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <form method="post" autocomplete="off">
+        <!-- <span class="govuk-caption-l">{{data['speciesName']}} ({{data['specimenCount']}} of {{data['totalSpecimens1']}})</span> -->
+          <h1 class="govuk-heading-l">Specimen history</h1>
+
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+              <table class="govuk-table">
+                <!-- <caption class="govuk-table__caption govuk-table__caption--m">Species</caption> -->
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Is the specimen alive?</th>
+                    <td class="govuk-table__cell"> <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
+                          <label class="govuk-label govuk-radios__label" for="changed-name">
+                            Yes
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
+                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
+                            No
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1?species-name-1={{data['species-name-2']}}">Change</a></td> -->
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Where are you importing the specien from?</th>
+                    <td class="govuk-table__cell"><div id="tt1-default" class="autocomplete-wrapper govuk-!-width-three-quarters" name="re-export-country" type="text"></div></td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Country of origin</th>
+                    <td class="govuk-table__cell"><div id="tt2-default" class="autocomplete-wrapper govuk-!-width-three-quarters" name="export-country" type="text"></div></td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Counytry of origin permit number</th>
+                    <td class="govuk-table__cell"><input class="govuk-input govuk-input--width-20" id="permit-number" name="permit-number" type="text" spellcheck="false" autocomplete="permit-number" value="{{data['permit-number']}}"></td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Country of origin permit issue date</th>
+                    <td class="govuk-table__cell">
+                      <div class="govuk-form-group">
+                      <div class="govuk-date-input" id="permit-issued">
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="permit-issued-day">
+                              Day
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="permit-issued-day" name="permit-issued-day" type="text" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="permit-issued-month">
+                              Month
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="permit-issued-month" name="permit-issued-month" type="text" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="permit-issued-year">
+                              Year
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="permit-issued-year" name="permit-issued-year" type="text" inputmode="numeric">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Country of last re-export</th>
+                    <td class="govuk-table__cell"><div id="tt3-default" class="autocomplete-wrapper govuk-!-width-three-quarters" name="last-re-export-country" type="text"></div></td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Country of last re-export certificate number</th>
+                    <td class="govuk-table__cell">        <input class="govuk-input govuk-input--width-20" id="cert-number" name="cert-number" type="text" spellcheck="false" autocomplete="cert-number" value="{{data['cert-number']}}"></td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Country of last re-export certificate issue date</th>
+                    <td class="govuk-table__cell">
+                      <div class="govuk-form-group">
+                        <div class="govuk-date-input" id="cert-issued">
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="cert-issued-day">
+                                Day
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="cert-issued-day" name="cert-issued-day" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="cert-issued-month">
+                                Month
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="cert-issued-month" name="cert-issued-month" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="cert-issued-year">
+                                Year
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="cert-issued-year" name="cert-issued-year" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Where will you keep the specimen?</th>
+                    <td class="govuk-table__cell">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="specimen-address-line-1">
+                          Address line 1
+                        </label>
+                        <input class="govuk-input" id="specimen-address-line-1" name="specimen-address-line-1" type="text" autocomplete="address-line1"  value="{{data['specimen-address-line-1']}}">
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="specimen-address-line-2">
+                          Address line 2 (optional)
+                        </label>
+                        <input class="govuk-input" id="specimen-address-line-2" name="specimen-address-line-2" type="text" autocomplete="address-line2" value="{{data['specimen-address-line-2']}}">
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="specimen-address-town">
+                          Town or city
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds" id="specimen-address-town" name="specimen-address-town" type="text" autocomplete="address-level2" value="{{data['specimen-address-town']}}">
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="specimen-address-postcode">
+                          Postcode
+                        </label>
+                        <input class="govuk-input govuk-input--width-10" id="specimen-address-postcode" name="specimen-address-postcode" type="text" autocomplete="postal-code" value="{{data['specimen-address-postcode']}}">
+                      </div>
+                    </td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Source code</th>
+                    <td class="govuk-table__cell">
+                      <input class="govuk-input govuk-input--width-3" id="specimenSource" name="specimenSource" type="text" value="{{data['specimenSource']}}" />
+                    </td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
+                  </tr>
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">Purpose code</th>
+                    <td class="govuk-table__cell">
+                      <input class="govuk-input govuk-input--width-3" id="purpose" name="purpose" type="text" value="{{data['purpose']}}" />
+                    </td>
+                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="govuk-form-group">
+                <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="yes-all" name="useDetails" type="radio" value="yes-all">
+                    <label class="govuk-label govuk-radios__label" for="yes-all">
+                      Yes - use these details for all the {{data['totalSpecimens1']}} {{data['speciesName']}} specimens
+                    </label>
+                  </div>
+                  <!-- <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="yes-one" name="useDetails"  type="radio" value="yes-one">
+                    <label class="govuk-label govuk-radios__label" for="yes-one">
+                      Yes - use these details for {{data['speciesName']}} ({{data['specimenCount']}} of {{data['totalSpecimens1']}})
+                    </label>
+                  </div> -->
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="no-none" name="useDetails"  type="radio" value="no-none">
+                    <label class="govuk-label govuk-radios__label" for="no-none">
+                      No - use different details
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <button class="govuk-button">Continue</button>
+
+              <!-- <a href="how-many-specimens" class="govuk-button" data-module="govuk-button">Continue</a> -->
+
+              <!-- End two-thirds content -->
+            </form>
+          </div>
+          </div>
+
+          <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+          <script type="text/javascript">
+
+            var reexportCountry = [
+            'Azerbaijan',
+            'Bahrain',
+            'Baker Island',
+            'Bangladesh',
+            'Barbados',
+            'Belarus',
+            'Belgium',
+            'Belize',
+            'Benin',
+            'Bermuda',
+            'Bhutan',
+            'Bolivia',
+            'Bonaire',
+            'Bosnia and Herzegovina',
+            'Botswana',
+            'Bouvet Island',
+            'country:BR',
+            'Brazil',
+            'British Indian Ocean Territory',
+            'British Virgin Islands',
+            'Brunei',
+            'Bulgaria',
+            'Burkina Faso',
+            'Burundi',
+            'Cambodia',
+            'Cameroon',
+            'Canada',
+            'Cape Verde',
+            'Cayman Islands',
+            'Central African Republic',
+            'Ceuta',
+            'Chad',
+            'Chile',
+            'China',
+            'Christmas Island',
+            'Cocos (Keeling) Islands',
+            'Colombia',
+            'Comoros',
+            'Congo',
+            'Congo (Democratic Republic)',
+            'Cook Islands',
+            'Costa Rica',
+            'Croatia',
+            'Cuba',
+            'Curaçao',
+            'Cyprus',
+            'Czechia',
+            'Czechoslovakia',
+            'Denmark',
+            'Dhekelia',
+            'Djibouti',
+            'Dominica',
+            'Dominican Republic',
+            'Dubai',
+            'East Germany',
+            'East Timor',
+            'Ecuador',
+            'Egypt',
+            'El Salvador',
+            'Equatorial Guinea',
+            'Eritrea',
+            'Estonia',
+            'Ethiopia',
+            'Falkland Islands',
+            'Faroe Islands',
+            'Fiji',
+            'Finland',
+            'France',
+            'French Guiana',
+            'French Polynesia',
+            'French Southern Territories',
+            'Fujairah',
+            'Gabon',
+            'Georgia',
+            'Germany',
+            'Ghana',
+            'Gibraltar',
+            'Greece',
+            'Greenland',
+            'Grenada',
+            'Guadeloupe',
+            'Guam',
+            'Guatemala',
+            'Guernsey',
+            'Guinea',
+            'Guinea-Bissau',
+            'Guyana',
+            'Haiti',
+            'Heard Island and McDonald Islands',
+            'Honduras',
+            'Hong Kong',
+            'Howland Island',
+            'Hungary',
+            'Iceland',
+            'India',
+            'Indonesia',
+            'Iran',
+            'Iraq',
+            'Ireland',
+            'Isle of Man',
+            'Israel',
+            'Italy',
+            'Ivory Coast',
+            'Jamaica',
+            'Japan',
+            'Jarvis Island',
+            'Jersey',
+            'Johnston Atoll',
+            'Jordan',
+            'Kazakhstan',
+            'Kenya',
+            'Kingman Reef',
+            'Kiribati',
+            'Kosovo',
+            'Kuwait',
+            'Kyrgyzstan',
+            'Laos',
+            'Latvia',
+            'Lebanon',
+            'Lesotho',
+            'Liberia',
+            'Libya',
+            'Liechtenstein',
+            'Lithuania',
+            'Luxembourg',
+            'Macao',
+            'Macedonia',
+            'Madagascar',
+            'Malawi',
+            'Malaysia',
+            'Maldives',
+            'Mali',
+            'Malta',
+            'Marshall Islands',
+            'Martinique',
+            'Mauritania',
+            'Mauritius',
+            'Mayotte',
+            'Melilla',
+            'Mexico',
+            'Micronesia',
+            'Midway Islands',
+            'Moldova',
+            'Monaco',
+            'Mongolia',
+            'Montenegro',
+            'Montserrat',
+            'Morocco',
+            'Mozambique',
+            'Myanmar (Burma)',
+            'Namibia',
+            'Nauru',
+            'Navassa Island',
+            'Nepal',
+            'Netherlands',
+            'New Caledonia',
+            'New Zealand',
+            'Nicaragua',
+            'Niger',
+            'Nigeria',
+            'Niue',
+            'Norfolk Island',
+            'North Korea',
+            'Northern Mariana Islands',
+            'Norway',
+            'Occupied Palestinian Territories',
+            'Oman',
+            'Pakistan',
+            'Palau',
+            'Palmyra Atoll',
+            'Panama',
+            'Papua New Guinea',
+            'Paraguay',
+            'Peru',
+            'Philippines',
+            'Pitcairn, Henderson, Ducie and Oeno Islands',
+            'Poland',
+            'Portugal',
+            'Puerto Rico',
+            'Qatar',
+            'Ras al-Khaimah',
+            'Romania',
+            'Russia',
+            'Rwanda',
+            'Réunion',
+            'Saba',
+            'Saint Barthélemy',
+            'Saint Helena',
+            'Saint Pierre and Miquelon',
+            'Saint-Martin (French part)',
+            'Samoa',
+            'San Marino',
+            'Sao Tome and Principe',
+            'Saudi Arabia',
+            'Senegal',
+            'Serbia',
+            'Seychelles',
+            'Sharjah',
+            'Sierra Leone',
+            'Singapore',
+            'Sint Eustatius',
+            'Sint Maarten (Dutch part)',
+            'Slovakia',
+            'Slovenia',
+            'Solomon Islands',
+            'Somalia',
+            'South Africa',
+            'South Georgia and South Sandwich Islands',
+            'South Korea',
+            'South Sudan',
+            'Spain',
+            'Sri Lanka',
+            'St Kitts and Nevis',
+            'St Lucia',
+            'St Vincent',
+            'Sudan',
+            'Suriname',
+            'Svalbard and Jan Mayen',
+            'Swaziland',
+            'Sweden',
+            'Switzerland',
+            'Syria',
+            'Taiwan',
+            'Tajikistan',
+            'Tanzania',
+            'Thailand',
+            'The Bahamas',
+            'The Gambia',
+            'Togo',
+            'Tokelau',
+            'Tonga',
+            'Trinidad and Tobago',
+            'Tristan da Cunha',
+            'Tunisia',
+            'Turkey',
+            'Turkmenistan',
+            'Turks and Caicos Islands',
+            'Tuvalu',
+            'USSR',
+            'Uganda',
+            'Ukraine',
+            'Umm al-Quwain',
+            'United Arab Emirates',
+            'United Kingdom',
+            'United States',
+            'United States Virgin Islands',
+            'Uruguay',
+            'Uzbekistan',
+            'Vanuatu',
+            'Vatican City',
+            'Venezuela',
+            'Vietnam',
+            'Wake Island',
+            'Wallis and Futuna',
+            'Western Sahara',
+            'Yemen',
+            'Yugoslavia',
+            'Zambia',
+            'Zimbabwe',
+            'Aland Islands'
+            ]
+
+          </script>
+
+          <script type="text/javascript">
+            var element = document.querySelector('#tt1-default')
+            var id = 'autocomplete-default'
+            accessibleAutocomplete({
+              element: element,
+              id: id,
+              name: "re-export-country",
+              source: reexportCountry
+            })
+          </script>
+
+          <script type="text/javascript">
+            var element = document.querySelector('#tt2-default')
+            var id = 'autocomplete-default'
+            accessibleAutocomplete({
+              element: element,
+              id: id,
+              name: "export-country",
+              source: reexportCountry
+            })
+          </script>
+
+          <script type="text/javascript">
+            var element = document.querySelector('#tt3-default')
+            var id = 'autocomplete-default'
+            accessibleAutocomplete({
+              element: element,
+              id: id,
+              name: "lat-re-export-country",
+              source: reexportCountry
+            })
+          </script>
+    {% endblock %}

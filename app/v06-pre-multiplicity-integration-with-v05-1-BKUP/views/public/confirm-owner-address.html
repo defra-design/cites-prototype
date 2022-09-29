@@ -1,0 +1,61 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "confirm-owner-address" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Confirm the owner's address
+            </h1>
+          </legend>
+          <p>We will use this address to send the permit.</p>
+
+          {% if data['owner-address'] === '14 Treetop Avenue, Leeds LE18 3PT'  %}
+          <p>
+            <br>14 Treetop Avenue
+            <br>Leeds
+            <br>{{data['address-postcode']}}
+          </p>
+          {% endif %}
+
+          {% if data['owner-address'] === '2 Clifton Street, Leeds LE18 3PT'  %}
+          <p>
+            <br>2 Clifton Street
+            <br>Leeds
+            <br>{{data['address-postcode']}}
+          </p>
+          {% endif %}
+
+          {% if data['owner-address'] === '10 Clifton Street, Leeds LE18 3PT'  %}
+          <p>
+            <br>10 Clifton Street
+            <br>Leeds
+            <br>{{data['address-postcode']}}
+          </p>
+          {% endif %}
+        </fieldset>
+      </div>
+      <button class="govuk-button">Confirm</button>
+      <p><a href="whats-the-owners-address" >Change address</a></p>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

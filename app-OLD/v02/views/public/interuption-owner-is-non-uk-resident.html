@@ -1,0 +1,49 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "interuption-owner-is-non-uk-resident" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+  .interrupt {
+    background-color: #1d70b8;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+  }
+  p {
+      color: white;
+    }
+  h1 {
+      color: white;
+    }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+      <div class="interrupt">
+        <h1 class="govuk-heading-l" style="color: white">Non-UK Resident</h1>
+        <p class="font-color" >Both the owner and the applicant are responsible for ensuring the information given in this application is correct.</p>
+        <p>If you are not the owner, you must have permission to act on their behalf.</p>
+        <br>
+      <button class="govuk-button" style="background-color: white; color: black">Continue</button>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

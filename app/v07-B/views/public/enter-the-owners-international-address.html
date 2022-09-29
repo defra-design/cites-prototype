@@ -1,0 +1,65 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "enter-the-owners-international-address" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off" {{ novalidateVal }}>
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Enter the owner's address
+          </h1>
+        </legend>
+        <div id="event-name-hint" class="govuk-hint">
+        If the owner is a business, give the business address.
+      </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="owner-international-address-line-1">
+            Address line 1
+          </label>
+          <input class="govuk-input" id="owner-international-address-line-1" name="owner-international-address-line-1" type="text" autocomplete="owner-international-address-line-1" value="{{data['owner-international-address-line-1']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="owner-international-address-line-2">
+            Address line 2 (optional)
+          </label>
+          <input class="govuk-input" id="owner-international-address-line-2" name="owner-international-address-line-2" type="text" autocomplete="owner-international-address-line-2"  value="{{data['owner-international-address-line-2']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="owner-international-address-postal-code">
+            Postcode or zip code (if the country has one)
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="owner-international-address-postal-code" name="owner-international-address-postal-code" type="text" value="{{data['owner-international-address-postal-code']}}">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="owner-international-address-country">
+            Country
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="owner-international-address-country" name="owner-international-address-country" type="text" autocomplete="owner-international-address-country" value="{{data['owner-international-address-country']}}">
+        </div>
+
+      </fieldset>
+
+        <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends "./layout.html" %}
+
+{% set thisPageTitle = "species-add-to-list-1" %}
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+
+{% endblock %}
+
+
+    <style>
+      /* Example page specific styling. */
+      html {
+        color: #111;
+        background: #FFF;
+        font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      body {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        line-height: normal;
+      }
+
+      label {
+        display: block;
+        margin-bottom: .5rem;
+      }
+
+      code {
+        padding-left: .5em;
+        padding-right: .5em;
+        background: #EFEFEF;
+        font-weight: normal;
+        font-family: monospace;
+      }
+
+      main {
+        max-width: 40em;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .autocomplete-wrapper {
+        max-width: 20em;
+        margin-bottom: 4rem;
+      }
+
+    </style>
+
+
+  {% block content %}
+
+  <link rel="stylesheet" href="/public/stylesheets/accessible-autocomplete.min.css">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <form method="post" autocomplete="off">
+          <h1 class="govuk-heading-l">Add a species to the permit</h1>
+          <label class="govuk-label" for="autocomplete-default">Search using the scientific or common name.</label>
+          <div id="tt-default" class="autocomplete-wrapper govuk-!-width-three-quarters" name="species-name-2" type="text"></div>
+
+          <br></br>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+              <div class="govuk-button-group">
+                  <button class="govuk-button govuk-button--secondary data-module="govuk-button">Add to permit</button>
+              </div>
+            </div>
+          </div>
+
+          <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+              <table class="govuk-table">
+                <caption class="govuk-table__caption govuk-table__caption--m">Species added to permit</caption>
+                <tbody class="govuk-table__body">
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">1</th>
+                    <td class="govuk-table__cell">{{data['species-name-1']}}</td>
+                    <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-0">Remove</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <a href="how-many-specimens" class="govuk-button" data-module="govuk-button">Save and continue</a>
+
+              <!-- End two-thirds content -->
+            </form>
+          </div>
+          </div>
+
+
+    <script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+
+      var species = [
+        'Species 1',
+        'Species 2',
+        'Species 3',
+        'Species 4',
+        'Species 5',
+        'Huso huso, Beluga',
+        'Elephantidae spp',
+        'Dalbergia nigra, Brazilian rosewood',
+        'Cheloniidae spp',
+        'Tyto alba, Barn Owl',
+        'Falco peregrinus, Peregrine Falcon',
+        'Falco rusticolus, Gyr Falcon',
+        'Buteo buteo, Buzzard',
+        'Odobenus rosmarus, Walrus',
+        'Python reticulatus, Reticulated Python',
+        'Varanus salvator, Rice Lizard',
+        'Testudo Hermanni, Tortoise'
+      ]
+
+    </script>
+
+    <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'autocomplete-default'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        name: "species-name-2",
+        source: species
+      })
+    </script>
+
+
+
+    {% endblock %}

@@ -1,0 +1,36 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "how-many-specimens" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+      <span class="govuk-caption-l">{{data['speciesName']}}</span>
+        <h1 class="govuk-heading-l">
+          {% if data['permitType'] === 'A10'%}
+              How many specimens of the species requires an A10?
+            {% else %}
+              How many specimens of the species will be {{data['permitType']}}ed?
+          {% endif %}
+        </h1>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="being-moved">Enter the total number of {{data['speciesName']}} specimens.</label>
+          <input class="govuk-input govuk-input--width-3" id="being-moved" name="totalSpecimens1" type="number" value="{{data['totalSpecimens1']}}" />
+        </div>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+
+
+{% endblock %}

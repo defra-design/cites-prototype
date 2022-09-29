@@ -1,0 +1,81 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "leather-goods" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Tell us about the specimen
+        </h1>
+      </legend>
+
+        <fieldset class="govuk-fieldset">
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="imported-via">
+              Where did you import the specimen via?
+            </label>
+          <input class="govuk-input" id="imported-via" name="imported-via" type="text" spellcheck="false" autocomplete="imported-via" value="{{data['imported-via']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="permit-number">
+              What is the permit number?
+            </label>
+          <input class="govuk-input govuk-input--width-20" id="permit-number" name="permit-number" type="text" spellcheck="false" autocomplete="permit-number" value="{{data['permit-number']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="permit-issue-date">
+              When was the permit issued?
+            </label>
+            <div id="permit-issued-hint" class="govuk-hint">
+              For example, 27 3 2007
+            </div>
+            <div class="govuk-date-input" id="permit-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="permit-issued-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="permit-issued-day" name="permit-issued-day" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="permit-issued-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="permit-issued-month" name="permit-issued-month" type="text" inputmode="numeric">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="permit-issued-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="permit-issued-year" name="permit-issued-year" type="text" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+        </fieldset>
+
+        <button class="govuk-button">Continue</button>
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "select-proxy-address" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form method="post" class="form">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Select your address
+            </h1>
+          </legend>
+<br>
+
+
+          <div class="govuk-form-group">
+                <select class="govuk-select govuk-!-width-two-thirds" id="sort" name="proxy-address" value="proxy-address">
+                  <option value="address-1" selected>3 addresses found</option>
+                  <option value="9 Barton Street, Manchester ME19 4TT">9 Barton Street, Manchester ME19 4TT</option>
+                  <option value="11 Barton Street, Manchester ME19 4TT">11 Barton Street, Manchester ME19 4TT</option>
+                  <option value="13 Barton Street, Manchester ME19 4TT">13 Barton Street, Manchester ME19 4TT</option>
+                </select>
+              </div>
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    I cannot find my address in the list
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <a href="what-is-your-proxy-address" >Search for your address again.</a>
+              </details>
+
+              <div>
+              <button class="govuk-button" data-module="govuk-button">Continue</button>
+            </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  {% endblock %}

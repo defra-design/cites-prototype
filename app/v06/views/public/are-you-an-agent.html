@@ -1,0 +1,45 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "are-you-an-agent" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-heading-l">Are you an agent?</h1>
+
+        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="isAgent-yes" name="isAgent" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="isAgent-yes">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="isAgent-no" name="isAgent"  type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="isAgent-no">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

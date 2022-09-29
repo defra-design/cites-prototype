@@ -1,0 +1,46 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "what-is-the-total-weight-of-the-specimen" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+        <h1 class="govuk-heading-l">
+            What is the total weight of the specimen?
+        </h1>
+
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="specimen-weight">Enter weight in Kg</label>
+              <input class="govuk-input govuk-input--width-4" id="specimen-weight" name="specimen-weight" type="text" value="{{data['specimen-weight']}}" />
+        </div>
+
+<!-- Example ay selfservice input prefix example - needs pay self service styling
+         <div class="currency-input form-group">
+           <label class="form-label-bold" for="payment-amount">
+             Payment amount
+             <span class="visually-hidden">in &pound;</span>
+           </label>
+           <div class="currency-input__inner">
+             <span class="currency-input__inner__unit">&pound;</span>
+             <input id="prototyping__links-input-amount" class="form-control form-control-1-4 " aria-label="Enter amount in pounds" name="payment-amount" data-non-numeric type="text" id="payment-amount" value="{{paymentAmount}}"  data-validate="required currency belowMaxAmount">
+           </div>
+         </div> -->
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "enter-proxy-contact-details" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Enter your contact details
+        </h1>
+      </legend>
+
+        <fieldset class="govuk-fieldset">
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="proxy-full-name">
+              Full name
+            </label>
+          <input class="govuk-input" id="proxy-full-name" name="proxy-full-name" type="text" spellcheck="false" autocomplete="name" value="{{data['proxy-full-name']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="proxy-business-name">
+              Business name (optional)
+            </label>
+            <div id="event-name-hint" class="govuk-hint">
+            If you are a business, give the business name.
+          </div>
+          <input class="govuk-input" id="proxy-business-name" name="proxy-business-name" type="text" spellcheck="false" autocomplete="name" value="{{data['proxy-business-name']}}">
+          </div>
+
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="email">
+              Email address
+            </label>
+            <div id="email-hint" class="govuk-hint">
+              We’ll only use this to send you a copy of this application.
+            </div>
+            <input class="govuk-input" id="email" name="email" type="email" spellcheck="false" aria-describedby="email-hint"  value="{{data['proxy-email']}}">
+          </div>
+
+        </fieldset>
+
+        <button class="govuk-button">Continue</button>
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}

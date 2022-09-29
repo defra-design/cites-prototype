@@ -1,0 +1,48 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "drop-out" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+  .interrupt {
+    background-color: #1d70b8;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+  }
+  p {
+      color: white;
+    }
+  h1 {
+      color: white;
+    }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+      <div class="interrupt">
+        <h1 class="govuk-heading-l" style="color: white">You cannot continue</h1>
+        <p class="font-color" style="color: white">The specimen owner or their agent must provide a UK address.</p>
+        <br>
+      <button class="govuk-button" style="background-color: white; color: black">Finish</button>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

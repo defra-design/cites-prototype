@@ -1,0 +1,55 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "in-what-capacity-are-you-completing-this-application" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              In what capacity are you completing this application?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicant-type-business" name="applicantType" type="radio" value="business">
+              <label class="govuk-label govuk-radios__label" for="applicant-type-business">
+                As a business
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicant-type-individual" name="applicantType" type="radio" value="individual">
+              <label class="govuk-label govuk-radios__label" for="applicant-type-individual">
+                As an individual
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicant-type-agent" name="applicantType" type="radio" value="agent">
+              <label class="govuk-label govuk-radios__label" for="applicant-type-agent">
+                As an agent
+              </label>
+            </div>
+
+        </fieldset>
+      </div>
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

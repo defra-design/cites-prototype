@@ -1,0 +1,45 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "was-the-specimen-imported-before-1-january-2021" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <span class="govuk-caption-l">{{data['species-name-1']}} ({{data['specimenCount']}} of {{data['totalSpecimens1']}})</span>
+        <h1 class="govuk-heading-l">Was the specimen-imported into Great Britain or the EU before 1 January 2021?</h1>
+        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="imported-before-yes" name="imported-before" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="imported-before-yes">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="imported-before-no" name="imported-before"  type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="imported-before-no">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

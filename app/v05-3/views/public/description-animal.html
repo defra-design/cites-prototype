@@ -1,0 +1,160 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "description-animal" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+
+  <div class="govuk-form-group">
+    <form action="how-much-money-are-you-applying-for" method="post" class="form">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Describe the specimen
+        </h1>
+      </legend>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <h2 class="govuk-heading-m">Animal 1</h2>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <h2 class="govuk-heading-m"></h2>
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <h2 class="govuk-heading-m"></h2>
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Gender
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="staffing" name="staffing-1"  value="{{ data['staffing-1'] }}"type="number" autocomplete="text">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Ring number or microchip
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="staffing" name="staffing-2"  value="{{ data['staffing-2'] }}"type="number" autocomplete="text">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Hatch date
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="staffing" name="staffing-3"  value="{{ data['staffing-3'] }}"type="number" autocomplete="text">
+        </div>
+
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Equipment
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="equipment" name="equipment-1"  value="{{ data['equipment-1'] }}" type="number" spellcheck="false">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Equipment
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="equipment" name="equipment-2"  value="{{ data['equipment-2'] }}" type="number" spellcheck="false">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Equipment
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="equipment" name="equipment-3"  value="{{ data['equipment-3'] }}" type="number" spellcheck="false">
+        </div>
+
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Materials
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="materials" name="materials-1"  value="{{ data['materials-1'] }}" type="number" spellcheck="false">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Materials
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="materials" name="materials-2"  value="{{ data['materials-2'] }}" type="number" spellcheck="false">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Materials
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="materials" name="materials-3"  value="{{ data['materials-3'] }}" type="number" spellcheck="false">
+        </div>
+
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Administration
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="administration" name="administration-1"  value="{{ data['administration-1'] }}" type="number" spellcheck="false">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Administration
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="administration" name="administration-2"  value="{{ data['administration-2'] }}" type="number" spellcheck="false">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Administration
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="administration" name="administration-3"  value="{{ data['administration-3'] }}" type="number" spellcheck="false">
+        </div>
+
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Overheads
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="overheads" name="overheads-1"  value="{{ data['overheads-1'] }}" type="number" spellcheck="false">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Overheads
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="overheads" name="overheads-2"  value="{{ data['overheads-2'] }}" type="number" spellcheck="false">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Overheads
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="overheads" name="overheads-3"  value="{{ data['overheads-3'] }}" type="number" spellcheck="false">
+        </div>
+
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Travel and subsidence
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="travel-and-subsidence" name="travel-and-subsidence-1"  value="{{ data['travel-and-subsidence-1'] }}" type="number" spellcheck="false">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Travel and subsidence
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="travel-and-subsidence" name="travel-and-subsidence-2"  value="{{ data['travel-and-subsidence-2'] }}" type="number" spellcheck="false">
+        </div>
+        <div class="govuk-grid-column-one-third govuk-form-group">
+          <label class="govuk-label" for="costs">
+            Travel and subsidence
+          </label>
+          <input class="govuk-input govuk-input--width-10" id="travel-and-subsidence" name="travel-and-subsidence-3"  value="{{ data['travel-and-subsidence-3'] }}" type="number" spellcheck="false">
+        </div>
+
+      </form>
+    </div>
+  <br>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </div>
+    </div>
+
+
+  {% endblock %}

@@ -1,0 +1,39 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "you-cannot-use-this-service-yet" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+        <h1 class="govuk-heading-l">
+            You cannot use this service yet
+        </h1>
+        <div class="govuk-form-group">
+          <div id="item-type-hint" class="govuk-hint">
+            You can only use this service to apply for:
+          </div>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>import, export or re-export permits</li>
+                <li>article 10 certificates</li>
+              </uL>
+        </div>
+        <p class="govuk-body govuk-!-margin-bottom-7">
+          <a href="#">Check how to apply for other CITES permits and certificates</a>
+        </p>
+
+      <button class="govuk-button">Finish</button>
+
+    </form>
+  </div>
+
+
+{% endblock %}

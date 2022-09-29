@@ -1,0 +1,31 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "enter-the-reg-number" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+        <h1 class="govuk-heading-l">
+            Enter the reg number for the Ford {{data['carMake']}}
+        </h1>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="being-moved">Reg number</label>
+          <input class="govuk-input govuk-input--width-3" id="being-moved" name="total-being-moved" type="text" value="{{data['reg-number']}}" />
+        </div>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "./layout.html" %}
+
+{% set thisPageTitle = "long-form-div" %}
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <form method="post" autocomplete="off">
+        <!-- <span class="govuk-caption-l">{{data['speciesName']}} ({{data['specimenCount']}} of {{data['totalSpecimens1']}})</span> -->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What type of permit or certificate are you applying for?
+            </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="permit-type-import" name="permitType" type="radio" value="import">
+                <label class="govuk-label govuk-radios__label" for="permit-type-import">
+                  Import
+                </label>
+                <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                  To move a species into Great Britain from another country.
+                </div>
+              </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="permit-type-export" name="permitType" type="radio" value="export">
+              <label class="govuk-label govuk-radios__label" for="permit-type-export">
+                Export
+              </label>
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                To move a species out of Great Britain to another country.
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="permit-type-re-export" name="permitType" type="radio" value="re-export">
+              <label class="govuk-label govuk-radios__label" for="permit-type-re-export">
+                Re-export
+              </label>
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                To move a species that has already been imported into Great Britain to another country.
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="permit-type-a10" name="permitType" type="radio" value="A10">
+              <label class="govuk-label govuk-radios__label" for="permit-type-a10">
+                A10
+              </label>
+              <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                To use any CITES annex A specimen for commercial purposes.
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="permit-type-other" name="permitType" type="radio" value="other">
+              <label class="govuk-label govuk-radios__label" for="permit-type-other">
+                Other
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        </div>
+        <button class="govuk-button">Continue</button>
+    </form>
+  </div>
+</div>
+
+    {% endblock %}

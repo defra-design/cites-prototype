@@ -1,0 +1,76 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "do-you-want-to-use-the-same-address" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-heading-l">Where will you keep the specimen?</h1>
+
+        {% if data['owner-address'] === '1'  %}
+        <p>
+          <br>14 Treetop Avenue
+          <br>Leeds
+          <br>LE18 3PT
+          <!-- <br>{{data['address-postcode']}} -->
+        </p>
+        {% endif %}
+
+        {% if data['owner-address'] === '2 Clifton Street, Leeds LE18 3PT'  %}
+        <p>
+          <br>2 Clifton Street
+          <br>Leeds
+          <br>{{data['address-postcode']}}
+        </p>
+        {% endif %}
+
+        {% if data['owner-address'] === '10 Clifton Street, Leeds LE18 3PT'  %}
+        <p>
+          <br>10 Clifton Street
+          <br>Leeds
+          <br>{{data['address-postcode']}}
+        </p>
+        {% endif %}
+
+        <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="use-same-address-yes" name="useSameAddress" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="use-same-address-yes">
+              {{data['owner-address']}}
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="use-same-address-yes" name="useSameAddress" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="use-same-address-yes">
+              10 Clifton Street, Leeds LE6 2HJ
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="use-same-address-no" name="useSameAddress"  type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="use-same-address-no">
+              At a different address
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "split-string" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+      <h1 class="govuk-heading-l">JavaScript Arrays</h1>
+
+      <p id="demo"></p>
+
+      <script>
+      const cars = ['Ford', 'Volvo', 'BMW'];
+      document.getElementById("demo").innerHTML = cars;
+      </script>
+
+
+      <button class="govuk-button" onclick="splitTheString">Continue</button>
+
+    </form>
+  </div>
+
+<script type="text/javascript">
+  function splitTheString(CommaSepStr) {
+    var ResultArray = null;
+
+    // Check if the string is null or so.
+    if (CommaSepStr!= null) {
+
+        var SplitChars = ',';
+
+        // Check if the string has comma of not will go to else
+        if (CommaSepStr.indexOf(SplitChars) >= 0) {
+            ResultArray = CommaSepStr.split(SplitChars);
+
+        }
+        else {
+
+            // The string has only one value, and we can also check
+            // the length of the string or time and cross-check too.
+            ResultArray = [CommaSepStr];
+            document.getElementById("demo").innerHTML = ResultArray;
+        }
+    }
+    // return ResultArray;
+    document.getElementById("demo").innerHTML = ResultArray;
+}
+</script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "list-of-car-makes" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+        <h1 class="govuk-heading-l">List of car makes</h1>
+            <table class="govuk-table">
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">1</th>
+                  <td class="govuk-table__cell">Ford</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header govuk-!-width-one-quarter">2</th>
+                  <td class="govuk-table__cell">Vauxhall</td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="govuk-button">Continue</button>
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

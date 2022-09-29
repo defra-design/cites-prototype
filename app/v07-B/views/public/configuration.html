@@ -1,0 +1,76 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "configuration" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-heading-l">Set the journey variables</h1>
+
+        <div class="govuk-form-group">
+                <h2 class="govuk-heading-m">What is the specimen's name?</h2>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="specimen-name">Specimen name</label>
+                  <input class="govuk-input govuk-input--width-10" id="specimen-name" name="specimen-name" type="text" value="{{data['specimen-name']}}" />
+                </div>
+        </div>
+
+
+        <h2 class="govuk-heading-m">Is the specimen an animal or plant?</h2>
+
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="specimenType-animal" name="specimenType" type="radio" value="animal">
+            <label class="govuk-label govuk-radios__label" for="specimenType-animal">
+              Animal
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="specimenType-plant" name="specimenType"  type="radio" value="plant">
+            <label class="govuk-label govuk-radios__label" for="specimenType-plant">
+              Plant
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-form-group">
+        <h2 class="govuk-heading-m">Is the specimen alive or dead?</h2>
+
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="isAlive-yes" name="isAlive" type="radio" value="alive">
+            <label class="govuk-label govuk-radios__label" for="isAlive-yes">
+              Alive
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="isAlive-no" name="isAlive"  type="radio" value="dead">
+            <label class="govuk-label govuk-radios__label" for="isAlive-no">
+              Dead
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "is-this-specimen-alive" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <h1 class="govuk-heading-l">Is this specimen alive?</h1>
+
+        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="isAlive-yes" name="isAlive" type="radio" value="alive">
+            <label class="govuk-label govuk-radios__label" for="isAlive-yes">
+              Yes
+            </label>
+          </div> 
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="isAlive-no" name="isAlive"  type="radio" value="dead">
+            <label class="govuk-label govuk-radios__label" for="isAlive-no">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

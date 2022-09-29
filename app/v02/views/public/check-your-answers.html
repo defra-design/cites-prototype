@@ -17,20 +17,20 @@
     <!-- <h2 class="govuk-heading-m ">First block</h2> -->
       <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
           <div class="app-check-your-answers__contents">
-            <dt class="app-check-your-answers__question">Are you applying on behalf of somebody else?</dt>
-            <dd class="app-check-your-answers__answer">{{ data['isAgent'] }}</dd>
-            <dd class="app-check-your-answers__change"><a href="are-you-applying-on-behalf-of-somebody-else">Change</a></dd>
+            <dt class="app-check-your-answers__question">Who is applying for the permit?</dt>
+            <dd class="app-check-your-answers__answer">{{ data['applicant'] }}</dd>
+            <dd class="app-check-your-answers__change"><a href="who-is-applying-for-the-permit">Change</a></dd>
           </div>
           <div class="app-check-your-answers__contents">
             <dt class="app-check-your-answers__question">What type of permit are you applying for?</dt>
             <dd class="app-check-your-answers__answer">{{ data['permitType'] }}</dd>
             <dd class="app-check-your-answers__change"><a href="what-type-of-permit-are-you-applying-for">Change</a></dd>
           </div>
-          <div class="app-check-your-answers__contents">
+          <!-- <div class="app-check-your-answers__contents">
             <dt class="app-check-your-answers__question">Are you selling your specimen?</dt>
             <dd class="app-check-your-answers__answer">{{ data['isSelling'] }}</dd>
             <dd class="app-check-your-answers__change"><a href="are-you-selling-your-specimen">Change</a></dd>
-          </div>
+          </div> -->
           <div class="app-check-your-answers__contents">
             <dt class="app-check-your-answers__question">What is the name of your specimen?</dt>
             <dd class="app-check-your-answers__answer">{{data['specimen-name']}}</dd>
@@ -38,11 +38,11 @@
           </div>
       </dl>
         <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
-            <div class="app-check-your-answers__contents">
+            <!-- <div class="app-check-your-answers__contents">
               <dt class="app-check-your-answers__question">Is this specimen correct?</dt>
               <dd class="app-check-your-answers__answer">{{ data['correctSpecimen'] }}</dd>
               <dd class="app-check-your-answers__change"><a href="is-this-specimen-correct">Change</a></dd>
-            </div>
+            </div> -->
             <div class="app-check-your-answers__contents">
               <dt class="app-check-your-answers__question">Is the specimen alive?</dt>
               <dd class="app-check-your-answers__answer">{{ data['isAlive'] }}</dd>
@@ -54,15 +54,15 @@
               <dd class="app-check-your-answers__change"><a href="description">Change</a></dd>
             </div>
             <div class="app-check-your-answers__contents">
-              <dt class="app-check-your-answers__question">How many of the specimens are you planning to move?</dt>
+              <dt class="app-check-your-answers__question">Enter the quantity</dt>
               <dd class="app-check-your-answers__answer">{{data['total-being-moved']}}</dd>
-              <dd class="app-check-your-answers__change"><a href="how-many-of-these-specimens-are-you-planning-to-move">Change</a></dd>
+              <dd class="app-check-your-answers__change"><a href="enter-the-quantity">Change</a></dd>
             </div>
         </dl>
         <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-8">
             <div class="app-check-your-answers__contents">
               <dt class="app-check-your-answers__question">What is the total weight of your specimen?</dt>
-              <dd class="app-check-your-answers__answer">{{data['specimen-weight']}}</dd>
+              <dd class="app-check-your-answers__answer">{{data['specimen-weight']}} Kg</dd>
               <dd class="app-check-your-answers__change"><a href="what-is-the-total-weight-of-your-specimen">Change</a></dd>
             </div>
             <div class="app-check-your-answers__contents">
@@ -71,7 +71,7 @@
               <dd class="app-check-your-answers__change"><a href="where-are-you-importing-your-specimen-from">Change</a></dd>
             </div>
             <div class="app-check-your-answers__contents">
-              <dt class="app-check-your-answers__question">Who is importing the specimen?</dt>
+              <dt class="app-check-your-answers__question">Enter the importer's details</dt>
               <dd class="app-check-your-answers__answer">
                     {{ data['importer-full-name'] }}
                 <br>{{ data['importer-telephone-number'] }}
@@ -80,12 +80,13 @@
                 <br>{{ data['importer-address-town'] }}
                 <br>{{ data['importer-address-county'] }}
                 <br>{{ data['importer-address-postcode'] }}</dd>
-              <dd class="app-check-your-answers__change"><a href="who-is-importing-the-specimen">Change</a></dd>
+              <dd class="app-check-your-answers__change"><a href="enter-the-importers-details">Change</a></dd>
             </div>
             <div class="app-check-your-answers__contents">
               <dt class="app-check-your-answers__question">Where will you keep your specimen?</dt>
               <dd class="app-check-your-answers__answer">
-                    {{ data['specimen-address-line-1'] }}
+                    {{ data['business-name']}}
+                <br>{{ data['specimen-address-line-1'] }}
                 <br>{{ data['specimen-address-line-2'] }}
                 <br>{{ data['specimen-address-town'] }}
                 <br>{{ data['specimen-address-county'] }}
@@ -98,9 +99,9 @@
               <dd class="app-check-your-answers__change"><a href="where-did-you-source-your-specimen-from">Change</a></dd>
             </div>
             <div class="app-check-your-answers__contents">
-              <dt class="app-check-your-answers__question">What is the country of origin of the specimen?</dt>
+              <dt class="app-check-your-answers__question">Where is the specimen originally from?</dt>
               <dd class="app-check-your-answers__answer">{{data['country-of-origin']}}</dd>
-              <dd class="app-check-your-answers__change"><a href="what-is-the-country-of-origin-of-the-specimen">Change</a></dd>
+              <dd class="app-check-your-answers__change"><a href="where-is-the-specimen-originally-from">Change</a></dd>
             </div>
         </dl>
 

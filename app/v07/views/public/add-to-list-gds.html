@@ -1,0 +1,79 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "add-to-a-list-gds" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+<link rel="stylesheet" href="/public/stylesheets/css/reset.css">
+<link rel="stylesheet" href="/public/stylesheets/start/css/main.css">
+<link rel="stylesheet" href="/public/stylesheets/end/css/reset.css">
+<link rel="stylesheet" href="/public/stylesheets/end/css/main.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+  crossorigin="anonymous">
+
+  <div>
+    <div>
+      <!-- main title holder -->
+      <div class="titleHolder">
+        <h1 class="govuk-heading-l">Add a species</h1>
+      </div>
+      <!-- <span style="font-size: 100px; color: Tomato;">
+      	<i class="fas fa-camera"></i>
+      </span> -->
+      <!-- form holder -->
+        <div class="col big">
+          <label class="govuk-label" for="autocomplete-default">Search using the scientific or common name.</label>
+          <input class="govuk-input govuk-!-width-three-quarters" type="text" id="addInput" name="specimenInput">
+        </div>
+<br>
+      <div class="formHolder">
+        <div class="col">
+          <button class="govuk-button govuk-button--secondary data-module=govuk-button" id="addBtn">Add species</button>
+        </div>
+        <div class="col">
+        <a href="description-dynamic" class="govuk-button" data-module="govuk-button">No more to add</a>
+        <button id="toggleBtn"></button>
+          <!-- <button type="button" id="toggleBtn" class="btn-primary">Hide List</button> -->
+        </div>
+      </div>
+<br>
+      <!-- todo list -->
+      <div class="todoList govuk-!-width-three-quarters">
+        <!-- list holder -->
+        <div class="listHolder">
+          <ul class="list">
+            <!-- <li>
+              <span class="govuk-body-m">Macbook</span>
+              <button class="btn-icon remove"></button>
+              <button class="btn-icon down"></button>
+              <button class="btn-icon up"></button>
+            </li> -->
+            <!-- <li>
+              <span class="govuk-body-m">Amazon Firestick</span>
+            </li>
+            <li>
+              <span class="govuk-body-m">Keyboard</span>
+            </li>
+            <li>
+              <span class="govuk-body-m">Headphones</span>
+            </li>
+            <li>
+              <span class="govuk-body-m">Airpods</span>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="/public/javascripts/main.js"></script>
+
+  {% endblock %}

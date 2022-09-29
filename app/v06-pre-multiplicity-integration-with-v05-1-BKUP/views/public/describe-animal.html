@@ -1,0 +1,169 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "description-animal" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Describe the specimen
+        </h1>
+      </legend>
+    </div>
+  </div>
+
+<div class="govuk-grid-row">
+  <!-- Start one third content -->
+  <div class="govuk-grid-column-one-third">
+    <form method="post" class="form">
+
+          <h2 class="govuk-heading-m">Animal 1 of 5</h2>
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="gender">
+                Gender
+              </label>
+            <input class="govuk-input govuk-input--width-5" id="gender" name="gender" type="text" spellcheck="false" autocomplete="gender" value="{{data['gender']}}">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="permit-number">
+                Ring number or microchip
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="closed-ring-number" name="closed-ring-number" type="text" spellcheck="false" autocomplete="closed-ring-number" value="{{data['closed-ring-number']}}">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="hatched-date">
+                Hatch date
+              </label>
+              <!-- <div id="permit-issued-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div> -->
+              <div class="govuk-date-input" id="hatched-date">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="hatched-date-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hatched-date-day" name="hatched-date-day" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="hatched-date-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="hatched-date-month" name="hatched-date-month" type="text" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="hatched-date-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="hatched-date-year" name="hatched-date-year" type="text" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </form>
+      </div>
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+  </div>
+  <!-- End one third content -->
+
+  <!-- Start two-thirds content -->
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Animal 1</h2>
+    <dl class="app-check-your-answers app-check-your-answers--long govuk-!-margin-bottom-4">
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+            Gender
+        <br>Closed ring number
+        <br>Hatch date
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        {{ data['gender'] }}
+        <br>{{ data['closed-ring-number'] }}
+        <br>{{ data['hatched-date-day'] }} {{ data['hatched-date-month'] }} {{ data['hatched-date-year'] }}
+      </dd>
+      <dd class="app-check-your-answers__change"><a href="#">Change</a></dd>
+    </div>
+    </dl>
+    <h2 class="govuk-heading-m">Animal 2</h2>
+    <dl class="app-check-your-answers app-check-your-answers--long govuk-!-margin-bottom-4">
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+            Gender
+        <br>Closed ring number
+        <br>Hatch date
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        {{ data['gender'] }}
+        <br>{{ data['closed-ring-number'] }}
+        <br>{{ data['hatched-date-day'] }} {{ data['hatched-date-month'] }} {{ data['hatched-date-year'] }}
+      </dd>
+      <dd class="app-check-your-answers__change"><a href="#">Change</a></dd>
+    </div>
+    </dl>
+    <h2 class="govuk-heading-m">Animal 3</h2>
+    <dl class="app-check-your-answers app-check-your-answers--long govuk-!-margin-bottom-4">
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+            Gender
+        <br>Closed ring number
+        <br>Hatch date
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        {{ data['gender'] }}
+        <br>{{ data['closed-ring-number'] }}
+        <br>{{ data['hatched-date-day'] }} {{ data['hatched-date-month'] }} {{ data['hatched-date-year'] }}
+      </dd>
+      <dd class="app-check-your-answers__change"><a href="#">Change</a></dd>
+    </div>
+    </dl>
+    <h2 class="govuk-heading-m">Animal 4</h2>
+    <dl class="app-check-your-answers app-check-your-answers--long govuk-!-margin-bottom-4">
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+            Gender
+        <br>Closed ring number
+        <br>Hatch date
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        {{ data['gender'] }}
+        <br>{{ data['closed-ring-number'] }}
+        <br>{{ data['hatched-date-day'] }} {{ data['hatched-date-month'] }} {{ data['hatched-date-year'] }}
+      </dd>
+      <dd class="app-check-your-answers__change"><a href="#">Change</a></dd>
+    </div>
+    </dl>
+    <h2 class="govuk-heading-m">Animal 5</h2>
+    <dl class="app-check-your-answers app-check-your-answers--long govuk-!-margin-bottom-4">
+    <div class="app-check-your-answers__contents">
+      <dt class="app-check-your-answers__question">
+            Gender
+        <br>Closed ring number
+        <br>Hatch date
+      </dt>
+      <dd class="app-check-your-answers__answer">
+        {{ data['gender'] }}
+        <br>{{ data['closed-ring-number'] }}
+        <br>{{ data['hatched-date-day'] }} {{ data['hatched-date-month'] }} {{ data['hatched-date-year'] }}
+      </dd>
+      <dd class="app-check-your-answers__change"><a href="#">Change</a></dd>
+    </div>
+    </dl>
+    <!-- End two-thirds content -->
+  </div>
+
+
+  {% endblock %}

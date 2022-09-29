@@ -1,0 +1,33 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "description" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+        <h1 class="govuk-heading-l">
+            Describe the specimen
+        </h1>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="description">For example, its age, sex, status and any other identifying features or marks.</label>
+        </div>
+
+        <textarea class="govuk-textarea" id="description" name="description" rows="10" aria-describedby="more-detail-hint" value="{{data['specimen-description']}}"></textarea>
+
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+
+
+{% endblock %}

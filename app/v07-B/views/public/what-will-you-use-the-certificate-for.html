@@ -1,0 +1,63 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "what-will-you-use-the-certificate-for" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What will you use the certificate for?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="purpose-1" name="purpose" type="radio" value="legal">
+              <label class="govuk-label govuk-radios__label" for="purpose-1">
+                To prove that you legally acquired a specimen
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="purpose-2" name="purpose" type="radio" value="commercial">
+              <label class="govuk-label govuk-radios__label" for="purpose-2">
+                To use the specimen for commercial activities
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="purpose-3" name="purpose" type="radio" value="research">
+              <label class="govuk-label govuk-radios__label" for="purpose-3">
+                To use the specimen for science, breeding, propagation, research, education or other non-detrimental purposes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="purpose-4" name="purpose" type="radio" value="move">
+              <label class="govuk-label govuk-radios__label" for="purpose-4">
+                To move a live specimen withing Great Britain
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

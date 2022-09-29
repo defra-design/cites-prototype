@@ -1,0 +1,52 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "interuption-owner-is-non-uk-resident" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+  .interrupt {
+    background-color: #1d70b8;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+  }
+  p {
+      color: white;
+    }
+  h1 {
+      color: white;
+    }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+
+      <div class="interrupt">
+        <h1 class="govuk-heading-l" style="color: white">Both the owner and applicant are jointly responsible for providing accurate information</h1>
+        <p class="font-color" >This is a self-declaration, both you and the owner are responsible for giving correct information.</p>
+        <p>You must have the owner’s consent to apply on their behalf.</p>
+        <div class="govuk-inset-text" style="color: white">
+          If we later find out that any of the information you have given is incorrect, your application may be cancelled. You may be subject to a fine of up to £250,000 or 5 years imprisonment
+        </div>
+        <br>
+      <button class="govuk-button" style="background-color: white; color: black">Confirm</button>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

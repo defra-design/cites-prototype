@@ -1,0 +1,113 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "what-will-you-use-your-permit-for" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full-width">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What will you use your permit for?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="purpose-1" name="purpose" type="radio" value="Breeding in captivity for artificial propagation">
+              <label class="govuk-label govuk-radios__label" for="purpose-1">
+                Breeding in captivity for artificial propagation
+              </label>
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="purpose-2" name="purpose" type="radio" value="Education">
+                <label class="govuk-label govuk-radios__label" for="purpose-2">
+                  Education
+                </label>
+              </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="purpose-3" name="purpose" type="radio" value="Biotanical gardens">
+              <label class="govuk-label govuk-radios__label" for="purpose-3">
+                Biotanical gardens
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="purpose-4" name="purpose" type="radio" value="Hunting trophies">
+              <label class="govuk-label govuk-radios__label" for="purpose-4">
+                Hunting trophies
+              </label>
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="purpose-5" name="purpose" type="radio" value="Enforcement">
+                <label class="govuk-label govuk-radios__label" for="purpose-5">
+                  Enforcement
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="purpose-6" name="purpose" type="radio" value="Bio-medical research">
+                <label class="govuk-label govuk-radios__label" for="purpose-6">
+                  Bio-medical research
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="purpose-7" name="purpose" type="radio" value="Reintroduction or introduction into the wild">
+                <label class="govuk-label govuk-radios__label" for="purpose-7">
+                  Reintroduction or introduction into the wild
+                </label>
+              </div>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="purpose-8" name="purpose" type="radio" value="Personal">
+                  <label class="govuk-label govuk-radios__label" for="purpose-8">
+                    Personal
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="purpose-9" name="purpose" type="radio" value="Circuses and travelling exhibitions">
+                  <label class="govuk-label govuk-radios__label" for="purpose-9">
+                    Circuses and travelling exhibitions
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="purpose-10" name="purpose" type="radio" value="Scientific">
+                  <label class="govuk-label govuk-radios__label" for="purpose-10">
+                    Scientific
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="purpose-11" name="purpose" type="radio" value="Commercial">
+                  <label class="govuk-label govuk-radios__label" for="purpose-11">
+                    Commercial
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="purpose-12" name="purpose" type="radio" value="Zoo">
+                  <label class="govuk-label govuk-radios__label" for="purpose-12">
+                    Zoo
+                  </label>
+                </div>
+
+
+        </fieldset>
+      </div>
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

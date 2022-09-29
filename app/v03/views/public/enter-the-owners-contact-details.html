@@ -1,0 +1,61 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "enter-the-owners-contact-details" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form method="post" autocomplete="off">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Enter the owner's contact details
+        </h1>
+      </legend>
+
+        <fieldset class="govuk-fieldset">
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="owner-full-name">
+              Full name
+            </label>
+          <input class="govuk-input" id="owner-full-name" name="owner-full-name" type="text" spellcheck="false" autocomplete="name" value="{{data['owner-full-name']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="owner-business-name">
+              Business name (optional)
+            </label>
+            <div id="event-name-hint" class="govuk-hint">
+            If the owner is a business, give the business name.
+          </div>
+          <input class="govuk-input" id="owner-business-name" name="owner-business-name" type="text" spellcheck="false" autocomplete="name" value="{{data['owner-business-name']}}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="email">
+              Email address (optional)
+            </label>
+            <div id="email-hint" class="govuk-hint">
+              We’ll only use this to send them a copy of this application.
+            </div>
+            <input class="govuk-input" id="email" name="email" type="email" spellcheck="false" aria-describedby="email-hint"  value="{{data['owner-email']}}">
+          </div>
+
+        </fieldset>
+
+        <button class="govuk-button">Continue</button>
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}

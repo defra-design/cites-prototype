@@ -1,0 +1,170 @@
+{% extends "./layout.html" %}
+
+{% set thisPageTitle = "long-form-div" %}
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+
+{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/public/stylesheets/accessible-autocomplete.min.css">
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <form method="post" autocomplete="off">
+        <!-- <span class="govuk-caption-l">{{data['speciesName']}} ({{data['specimenCount']}} of {{data['totalSpecimens1']}})</span> -->
+          <h1 class="govuk-heading-l">Contact details</h1>
+
+          <div class="govuk-form-group">
+            <h2 class="govuk-heading-m">Are you an agent?</h2>
+
+            <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="isAgent-yes" name="isAgent" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="isAgent-yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="isAgent-no" name="isAgent"  type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="isAgent-no">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-half">
+              <form method="post" autocomplete="off">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h2 class="govuk-heading-m">Applicant details</h2>
+                </legend>
+                  <fieldset class="govuk-fieldset">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="owner-full-name">
+                        Full name
+                      </label>
+                    <input class="govuk-input" id="owner-full-name" name="owner-full-name" type="text" spellcheck="false" autocomplete="name" value="{{data['owner-full-name']}}">
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="owner-business-name">
+                        Business name (optional)
+                      </label>
+                      <div id="event-name-hint" class="govuk-hint">
+                      If the applicant is a business, give the business name.
+                    </div>
+                    <input class="govuk-input" id="owner-business-name" name="owner-business-name" type="text" spellcheck="false" autocomplete="name" value="{{data['owner-business-name']}}">
+                    </div>
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="email">
+                        Email address
+                      </label>
+                      <div id="email-hint" class="govuk-hint">
+                        We’ll only use this to send you a copy of this application.
+                      </div>
+                      <input class="govuk-input" id="email" name="owner-email" type="email" spellcheck="false" aria-describedby="email-hint"  value="{{data['owner-email']}}">
+                    </div>
+                    <p class="govuk-body">If it's a business, give the business address.</p>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="address-line-1">
+                        Address line 1
+                      </label>
+                      <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1">
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="address-line-2">
+                        Address line 2 (optional)
+                      </label>
+                      <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2">
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="address-town">
+                        Town or city
+                      </label>
+                      <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text" autocomplete="address-level2">
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="address-postcode">
+                        Postcode
+                      </label>
+                      <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+              <div class="govuk-grid-column-one-half">
+                <form method="post" autocomplete="off">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h2 class="govuk-heading-m">Agent details</h2>
+                  </legend>
+                    <fieldset class="govuk-fieldset">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="owner-full-name">
+                          Full name
+                        </label>
+                      <input class="govuk-input" id="owner-full-name" name="owner-full-name" type="text" spellcheck="false" autocomplete="name" value="{{data['owner-full-name']}}">
+                      </div>
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="owner-business-name">
+                          Business name (optional)
+                        </label>
+                        <div id="event-name-hint" class="govuk-hint">
+                        If the agent is a business, give the business name.
+                      </div>
+                      <input class="govuk-input" id="owner-business-name" name="owner-business-name" type="text" spellcheck="false" autocomplete="name" value="{{data['owner-business-name']}}">
+                      </div>
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="email">
+                          Email address
+                        </label>
+                        <div id="email-hint" class="govuk-hint">
+                          We’ll only send you information about this application.
+                        </div>
+                        <input class="govuk-input" id="email" name="owner-email" type="email" spellcheck="false" aria-describedby="email-hint"  value="{{data['owner-email']}}">
+                      </div>
+                      <p class="govuk-body">If it's a business, give the business address.</p>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="address-line-1">
+                          Address line 1
+                        </label>
+                        <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1">
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="address-line-2">
+                          Address line 2 (optional)
+                        </label>
+                        <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2">
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="address-town">
+                          Town or city
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text" autocomplete="address-level2">
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="address-postcode">
+                          Postcode
+                        </label>
+                        <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+              <div class="govuk-grid-column-full">
+                <button class="govuk-button">Continue</button>
+              </div>
+            </div>
+
+    {% endblock %}

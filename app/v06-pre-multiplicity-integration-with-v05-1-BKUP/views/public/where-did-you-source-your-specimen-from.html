@@ -1,0 +1,228 @@
+{% extends "./layout.html" %}
+
+
+{% set thisPageTitle = "where-did-you-source-your-specimen-from" %}
+
+
+{% block pageTitle %}
+{{ thisPageTitle }} - {{ serviceName }} - GOV.UK
+{% endblock %}
+
+
+{% block content %}
+
+{% if data['specimenType'] === 'animal' %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{data['species-name-1']}}</span>
+            <h1 class="govuk-fieldset__heading">
+              Where did you source the specimen from?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-1" name="specimenSource" type="radio" value="From the wild">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-1">
+                W
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-2" name="specimenSource" type="radio" value="Reared in a controlled environment (taken as eggs or juveniles from the wild)">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-2">
+                R
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-3" name="specimenSource" type="radio" value="Animals bred in captivity for commercial purposes">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-3">
+                D
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-4" name="specimenSource" type="radio" value="Animals bred in captivity for non-commercial purposes">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-4">
+                C
+                </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-5" name="specimenSource" type="radio" value="Animals born in captivity that do not meet the Commission Regulation criteria">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-5">
+                F
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-7" name="specimenSource" type="radio" value="Plants artificially propagated for non-commercial purposes">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-7">
+                I
+              </label>
+              </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-9" name="specimenSource" type="radio" value="Pre-convention">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-9">
+                O
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-10" name="specimenSource" type="radio" value="Taken from the marine environment">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-10">
+                X
+              </label>
+            </div>
+            <div class="govuk-radios__divider">Or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-11" name="specimenSource" type="radio" value="I do not know">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-11">
+                I do not know
+              </label>
+              </div>
+<br>
+                <div class="govuk-form-group">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      Show me a description for each source code
+                    </span>
+                  </summary>
+                  <div>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">W</p>
+                    <p>From the wild</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">R</p>
+                    <p>Reared in a controlled environment (taken as eggs or juveniles from the wild)</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">D</p>
+                    <p>Animals bred in captivity for commercial purposes</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">C</p>
+                    <p>Animals bred in captivity for non-commercial purposes</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">F</p>
+                    <p>Animals born in captivity that do not meet the Commission Regulation criteria</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">I</p>
+                    <p>Confiscated or seized</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">O</p>
+                    <p>Pre-convention</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">X</p>
+                    <p>Taken from the marine environment</p>
+                    <hr>
+                  </div>
+                </details>
+              </div>
+
+        </fieldset>
+      </div>
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endif %}
+
+{% if data['specimenType'] === 'plant' %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <form method="post" autocomplete="off">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{data['species-name-1']}}</span>
+            <h1 class="govuk-fieldset__heading">
+              Where did you source the specimen from?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-1" name="specimenSource" type="radio" value="From the wild">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-1">
+                W
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-3" name="specimenSource" type="radio" value="Animals bred in captivity for commercial purposes">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-3">
+                D
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-7" name="specimenSource" type="radio" value="Plants artificially propagated for non-commercial purposes">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-7">
+                A
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-8" name="specimenSource" type="radio" value="Confiscated or seized">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-8">
+                I
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-9" name="specimenSource" type="radio" value="Pre-convention">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-9">
+                O
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-10" name="specimenSource" type="radio" value="Taken from the marine environment">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-10">
+                X
+              </label>
+            </div>
+            <div class="govuk-radios__divider">Or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="specimen-source-11" name="specimenSource" type="radio" value="I do not know">
+              <label class="govuk-label govuk-radios__label" for="specimen-source-11">
+                I do not know
+              </label>
+            </div>
+<br>
+                <div class="govuk-form-group">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      Show me a description for each source code
+                    </span>
+                  </summary>
+                  <div>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">W</p>
+                    <p>From the wild</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">D</p>
+                    <p>Animals bred in captivity for commercial purposes</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">A</p>
+                    <p>Plants artificially propogated for non-commercial purposes</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">I</p>
+                    <p>Confiscated or seized</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">O</p>
+                    <p>Pre-convention</p>
+                    <hr>
+                    <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">X</p>
+                    <p>Taken from the marine environment</p>
+                    <hr>
+                  </div>
+                </details>
+              </div>
+
+        </fieldset>
+      </div>
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock %}
