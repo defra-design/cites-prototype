@@ -14,13 +14,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form method="post" autocomplete="off">
-          <h1 class="govuk-heading-l">
-              What is your address?
-          </h1>
-          <!-- <div id="event-name-hint" class="govuk-hint">
-          If the owner is a business, give the business address.
-        </div> -->
 
+        {% if data['isAgent'] == 'yes'%}
+          <h1 class="govuk-heading-l">
+              What is the owner's address?
+          </h1>
           <fieldset class="govuk-fieldset">
             <div class="govuk-form-group">
               <label class="govuk-label" for="postcode">
@@ -28,8 +26,21 @@
               </label>
               <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code" value="{{data['your-address-postcode']}}">
             </div>
-
           </fieldset>
+
+          {% else %}
+          <h1 class="govuk-heading-l">
+              What is your address?
+          </h1>
+          <fieldset class="govuk-fieldset">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="postcode">
+                Postcode
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code" value="{{data['your-address-postcode']}}">
+            </div>
+          </fieldset>
+          {% endif %}
 
           <button class="govuk-button">Find address</button>
           <p><a href="search-for-your-address" >I do not know the postcode</a></p>

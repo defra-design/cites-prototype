@@ -1,7 +1,7 @@
 {% extends "./layout.html" %}
 
 
-{% set thisPageTitle = "select-your-address" %}
+{% set thisPageTitle = "select-an-address" %}
 
 
 {% block pageTitle %}
@@ -17,11 +17,9 @@
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Select your address
+              Select an address
             </h1>
           </legend>
-<br>
-
 
               <div class="govuk-form-group">
                 <label class="govuk-label" for="sort">
@@ -42,8 +40,26 @@
                     I cannot find the address in this list
                   </span>
                 </summary>
-              <div class="govuk-details__text">
-                  If you still cannot find the address, contact the owner to confirm their details.
+
+                {% if data['isAgent'] == 'yes'%}
+                {% if data['permitType'] == 'import' %}
+                <div class="govuk-details__text">
+                    If you still cannot find the address, contact the importer to confirm their details.
+                </div>
+                {% elseif data['permitType'] == 'export' %}
+                <div class="govuk-details__text">
+                    If you still cannot find the address, contact the exporter to confirm their details.
+                </div>
+                {% elseif data['permitType'] == 're-export' %}
+                <div class="govuk-details__text">
+                    If you still cannot find the address, contact the re-exporter to confirm their details.
+                </div>
+                {% elseif data['permitType'] == 'A10' %}
+                <div class="govuk-details__text">
+                    If you still cannot find the address, contact the applicant to confirm their details.
+                </div>
+                {% endif %}
+                {% endif %}
               </details>
 
               <div class="govuk-form-group">
