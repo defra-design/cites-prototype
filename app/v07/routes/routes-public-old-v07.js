@@ -37,7 +37,7 @@ router.get('/permit-details', function (req, res) {
 })
 
 router.post('/permit-details', function (req, res) {
-  res.redirect('species-add-to-list-0')
+  res.redirect('specimen-details')
 })
 
 // Specimen details
@@ -58,7 +58,7 @@ router.post('/specimen-history', function (req, res) {
   res.redirect('check-your-answers-new')
 })
 
-// Check your answers new
+// Check your answwers new
 router.get('/check-your-answers-new', function (req, res) {
   res.render(viewsFolder + 'check-your-answers-new')
 })
@@ -132,7 +132,7 @@ router.get('/species-add-to-list-2', function (req, res) {
 
 router.post('/species-add-to-list-2', function (req, res) {
   req.session.data['noOfSpecies'] = req.session.data['noOfSpecies'] + 1
-  res.redirect('specimen-details')
+  res.redirect('how-many-specimens')
 })
 
 // Species remove row 1 from list 2
@@ -153,15 +153,6 @@ router.post('/species-remove-row-2', function (req, res) {
   res.redirect('#')
 })
 
-// Are all the specimens alive
-router.get('/are-all-the-specimens-alive', function (req, res) {
-  res.render(viewsFolder + 'are-all-the-specimens-alive')
-})
-
-router.post('/are-all-the-specimens-alive', function (req, res) {
-  res.redirect('description-dynamic')
-})
-
 // How many specimens
 router.get('/how-many-specimens', function (req, res) {
   let specimenCount = 0
@@ -170,6 +161,15 @@ router.get('/how-many-specimens', function (req, res) {
 
 router.post('/how-many-specimens', function (req, res) {
   res.redirect('where-did-you-source-your-specimen-from')
+})
+
+// Are all the specimens alive
+router.get('/are-all-the-specimens-alive', function (req, res) {
+  res.render(viewsFolder + 'are-all-the-specimens-alive')
+})
+
+router.post('/are-all-the-specimens-alive', function (req, res) {
+  res.redirect('description-dynamic')
 })
 
 // Parameters
@@ -491,13 +491,13 @@ router.post('/describe-the-specimen', function (req, res) {
   res.redirect('enter-the-quantity')
 })
 
-// Are you applying on behalf of someone else?
-router.get('/are-you-applying-on-behalf-of-someone-else', function (req, res) {
-  res.render(viewsFolder + 'are-you-applying-on-behalf-of-someone-else')
+// Are you an agent?
+router.get('/are-you-an-agent', function (req, res) {
+  res.render(viewsFolder + 'are-you-an-agent')
 })
 
-router.post('/are-you-applying-on-behalf-of-someone-else', function (req, res) {
-  res.redirect('enter-your-contact-details')
+router.post('/are-you-an-agent', function (req, res) {
+  res.redirect('enter-the-owners-contact-details')
 })
 
 
@@ -574,7 +574,7 @@ router.get('/file-upload', function (req, res) {
 })
 
 router.post('/file-upload', function (req, res) {
-  res.redirect('preview-applications')
+  res.redirect('applicaion-complete')
 })
 
 // Find address
@@ -754,15 +754,6 @@ router.post('/is-this-the-only-time-the-specimen-has-moved-from-its-country-of-o
     res.redirect('enter-proxy-contact-details')
   })
 
-  // Preview
-  // router.get('/preview-applications', function (req, res) {
-  //   res.render(viewsFolder + 'preview-applications')
-  // })
-  //
-  // router.post('/preview-applications', function (req, res) {
-  //   res.redirect('application-completed')
-  // })
-
 
 // Select your address
   router.get('/select-your-address', function (req, res) {
@@ -895,7 +886,7 @@ router.get('/what-will-you-use-the-certificate-for', function (req, res) {
 })
 
 router.post('/what-will-you-use-the-certificate-for', function (req, res) {
-  res.redirect('are-you-applying-on-behalf-of-someone-else')
+  res.redirect('species-add-to-list-0')
 })
 
 
@@ -929,13 +920,13 @@ router.get('/what-type-of-permit-or-certificate-are-you-applying-for', function 
 router.post('/what-type-of-permit-or-certificate-are-you-applying-for', function (req, res) {
   let permitType = req.session.data['permitType']
   if (permitType === 'import') {
-    res.redirect('are-you-applying-on-behalf-of-someone-else')
+    res.redirect('species-add-to-list-0')
   }
   if (permitType === 'export') {
-    res.redirect('are-you-applying-on-behalf-of-someone-else')
+    res.redirect('species-add-to-list-0')
   }
   if (permitType === 're-export') {
-    res.redirect('are-you-applying-on-behalf-of-someone-else')
+    res.redirect('species-add-to-list-0')
   }
   if (permitType === 'A10') {
     res.redirect('what-will-you-use-the-certificate-for')

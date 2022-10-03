@@ -15,9 +15,35 @@
   <div class="govuk-grid-column-two-thirds">
     <form method="post" autocomplete="off">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        {% if data['isAgent'] == 'yes'%}
+        {% if data['permitType'] == 'A10'%}
+        <h1 class="govuk-fieldset__heading">
+          Enter the applicant's contact details
+        </h1>
+        {% elseif data['permitType'] == 'import' %}
+        <h1 class="govuk-fieldset__heading">
+          Enter the importer's contact details
+        </h1>
+        {% elseif data['permitType'] == 'export' %}
+        <h1 class="govuk-fieldset__heading">
+          Enter the exporter's contact details
+        </h1>
+        {% elseif data['permitType'] == 're-export' %}
+        <h1 class="govuk-fieldset__heading">
+          Enter the re-exporter's contact details
+        </h1>
+        {% else %}
         <h1 class="govuk-fieldset__heading">
           Enter your contact details
         </h1>
+        {% endif %}
+        {% endif %}
+
+        {% if data['isAgent'] == 'no'%}
+        <h1 class="govuk-fieldset__heading">
+          Enter your contact details
+        </h1>
+        {% endif %}
       </legend>
 
         <fieldset class="govuk-fieldset">
@@ -45,7 +71,7 @@
               Email address
             </label>
             <div id="email-hint" class="govuk-hint">
-              We’ll only use this to contact you about the application.
+              We’ll only use this to send you a copy of this application.
             </div>
             <input class="govuk-input" id="email" name="your-email" type="email" spellcheck="false" aria-describedby="email-hint"  value="{{data['your-email']}}">
           </div>
