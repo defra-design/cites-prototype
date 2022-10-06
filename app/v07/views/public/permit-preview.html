@@ -10,19 +10,27 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-quarter">
-    <h2 class="govuk-heading-l">Permits</h2>
-    <p><a href="pdfs/permit-1.html" target="iframe-main">Permit 1</a></p>
-    <p><a href="pdfs/permit-2.html" target="iframe-main">Permit 2</a></p>
-  </div>
-
-  <div class="govuk-grid-column-three-quarters" id="wrap">
-      <h1 class="govuk-heading-l">Permit preview</h1>
-        <!-- <a href="pdfs/permit.html" download="permit.html"><button type="button">Download</button></a> -->
-        <!-- <embed src="pdfs/permit-2.html" width="100%" height="1300px"></embed> -->
-        <iframe src="pdfs/permit-2.html" id="iframe-main" name="iframe-main" width="100%" height="1200px" style="border:none;"></iframe>
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Preview your applications</h1>
   </div>
 </div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+      <form method="post" autocomplete="off">
+        <p><a href="permit-1" target="iframe-main">Application 1</a></p>
+        <p><a href="permit-2" target="iframe-main">Application 2</a></p>
+        <br><button class="govuk-button">I'm done previewing</button>
+      </form>
+    </div>
+
+    <div class="govuk-grid-column-three-quarters" id="wrap">
+      <!-- <a href="pdfs/permit.html" download="permit.html"><button type="button">Download</button></a> -->
+      <!-- <embed src="pdfs/permit-2.html" width="100%" height="1300px"></embed> -->
+      <iframe src="permit-1.html" id="iframe-main" name="iframe-main" style="border:none;"></iframe>
+    </div>
+</div>
+
 
 <style>
   /* #wrap {
@@ -33,8 +41,9 @@
   } */
   #iframe-main {
     width: 900px;
-    height: 2000px;
+    height: 1250px;
     border: 0px;
+    background-color: #f3f2f1;
   }
   #iframe-main {
     zoom: 0.75;

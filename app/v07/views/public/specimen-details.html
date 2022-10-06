@@ -17,60 +17,19 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <form method="post" autocomplete="off">
-        <!-- <span class="govuk-caption-l">{{data['speciesName']}} ({{data['specimenCount']}} of {{data['totalSpecimens1']}})</span> -->
-          <h1 class="govuk-heading-l">Specimen details</h1>
+          <h1 class="govuk-heading-l">{{data['speciesName']}} ({{data['specimenCount']}} of {{data['totalSpecimens1']}})</h1>
 
           <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
               <table class="govuk-table">
-                <!-- <caption class="govuk-table__caption govuk-table__caption--m">Species</caption> -->
                 <tbody class="govuk-table__body">
+
                   <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header govuk-!-width-one-half">What is the specimen's scientific name?</th>
-                    <td class="govuk-table__cell">
-                      <label class="govuk-label" for="scientific-name">Scientific name</label>
-                        <div id="tt2-default" class="autocomplete-wrapper govuk-!-width-three-quarters" name="scientific-name" type="text"></div>
-                    </td>
-                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
-                  </tr>
-                  <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header">How many specimens are there?</th>
-                    <td class="govuk-table__cell">
-                    <label class="govuk-label" for="specimenSource">Number of specimens</label>
-                    <input class="govuk-input govuk-input--width-3" id="specimenSource" name="specimenSource" type="text" value="{{data['specimenSource']}}" />
-                    </td>
-                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
-                  </tr>
-                  <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header">Is the specimen alive?</th>
-                    <td class="govuk-table__cell">
-                      <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-                        <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="changed-name" name="changed-name" type="radio" value="yes">
-                          <label class="govuk-label govuk-radios__label" for="changed-name">
-                            Yes
-                          </label>
-                        </div>
-                        <div class="govuk-radios__item">
-                          <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
-                          <label class="govuk-label govuk-radios__label" for="changed-name-2">
-                            No
-                          </label>
-                        </div>
+                    <th scope="row" class="govuk-table__header">Do you know the trade term code?
+                      <div id="hatch-date-hint" class="govuk-hint">
+                          For example, 'LIV' for live animals.
                       </div>
-                    </td>
-                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1?species-name-1={{data['species-name-2']}}">Change</a></td> -->
-                  </tr>
-                  <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header">Where did you source the specimen from?</th>
-                    <td class="govuk-table__cell">
-                      <label class="govuk-label" for="specimenSource">Source code</label>
-                      <input class="govuk-input govuk-input--width-3" id="specimenSource" name="specimenSource" type="text" value="{{data['specimenSource']}}" />
-                    </td>
-                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Change</a></td> -->
-                  </tr>
-                  <tr class="govuk-table__row">
-                    <th scope="row" class="govuk-table__header">Do you know the trade term code?</th>
-                    <td class="govuk-table__cell"> <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                    </th>
+                    <td class="govuk-table__cell"> <div class="govuk-radios govuk-radios" data-module="govuk-radios">
                       <div class="govuk-radios govuk-radios" data-module="govuk-radios">
                         <div class="govuk-radios__item">
                           <input class="govuk-radios__input" id="trade-term-yes" name="trade-term" type="radio" value="yes" data-aria-controls="conditional-trade-tern">
@@ -93,35 +52,33 @@
                           </label>
                         </div>
                     </td>
-                    <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1?species-name-1={{data['species-name-2']}}">Change</a></td> -->
                   </tr>
-<!-- **************************************** -->
-<tr class="govuk-table__row">
-  <th scope="row" class="govuk-table__header">What is the specimen's gender?</th>
-  <td class="govuk-table__cell"> <div class="govuk-radios govuk-radios" data-module="govuk-radios">
-    <div class="govuk-radios" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="specimen-gender-1" name="specimen-gender" type="radio" value="F">
-        <label class="govuk-label govuk-radios__label" for="specimen-gender-1">
-          Female
-        </label>
-      </div>
-    <div class="govuk-radios__item">
-      <input class="govuk-radios__input" id="specimen-gender-2" name="specimen-gender" type="radio" value="M">
-      <label class="govuk-label govuk-radios__label" for="specimen-gender-2">
-        Male
-      </label>
-    </div>
-  <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="specimen-gender-3" name="specimen-gender" type="radio" value="U">
-    <label class="govuk-label govuk-radios__label" for="specimen-gender-3">
-      Unknown
-    </label>
-  </div>
-</div>
-  </td>
-  <!-- <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1?species-name-1={{data['species-name-2']}}">Change</a></td> -->
-</tr>
+
+                  <tr class="govuk-table__row">
+                    <th scope="row" class="govuk-table__header">What is the specimen's gender?</th>
+                    <td class="govuk-table__cell"> <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="specimen-gender-1" name="specimen-gender" type="radio" value="F">
+                          <label class="govuk-label govuk-radios__label" for="specimen-gender-1">
+                            Female
+                          </label>
+                        </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="specimen-gender-2" name="specimen-gender" type="radio" value="M">
+                        <label class="govuk-label govuk-radios__label" for="specimen-gender-2">
+                          Male
+                        </label>
+                      </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="specimen-gender-3" name="specimen-gender" type="radio" value="U">
+                      <label class="govuk-label govuk-radios__label" for="specimen-gender-3">
+                        Unknown
+                      </label>
+                    </div>
+                  </div>
+                    </td>
+                  </tr>
 
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">What is the closed ring number or microchip?</th>
@@ -176,6 +133,14 @@
                           </div>
                         </div>
                       </div>
+                      <br><p>Or</p>
+                      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                         <div class="govuk-checkboxes__item">
+                           <input class="govuk-checkboxes__input" id="hatch-date-not-known" name="hatch-date-not-known" type="checkbox" value="known">
+                           <label class="govuk-label govuk-checkboxes__label" for="hatch-date-not-known">
+                             I don't now
+                           </label>
+                         </div>
                     </div>
                     </td>
                   </tr>
@@ -196,6 +161,7 @@
                         </div>
                     </div>
                     </td>
+                  </tr>
 
                 </tbody>
               </table>

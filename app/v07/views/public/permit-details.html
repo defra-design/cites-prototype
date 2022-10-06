@@ -12,7 +12,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form method="post" autocomplete="off">
-        <!-- <span class="govuk-caption-l">{{data['speciesName']}} ({{data['specimenCount']}} of {{data['totalSpecimens1']}})</span> -->
+        <span class="govuk-caption-l">{{data['speciesName']}} ({{data['specimenCount']}} of {{data['totalSpecimens1']}})</span>
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -20,135 +20,11 @@
               Permit details
             </h1>
             </legend>
-            <h2 class="govuk-heading-m">What type of permit are you applying for?</h2>
-
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="permit-type-import" name="permitType" type="radio" value="import">
-                <label class="govuk-label govuk-radios__label" for="permit-type-import">
-                  Import
-                </label>
-                <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                  To move a species into Great Britain from another country.
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="permit-type-export" name="permitType" type="radio" value="export">
-                <label class="govuk-label govuk-radios__label" for="permit-type-export">
-                  Export
-                </label>
-                <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                  To move a species out of Great Britain to another country.
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="permit-type-re-export" name="permitType" type="radio" value="re-export">
-                <label class="govuk-label govuk-radios__label" for="permit-type-re-export">
-                  Re-export
-                </label>
-                <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                  To move a species that has already been imported into Great Britain to another country.
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="permit-type-a10" name="permitType" type="radio" value="A10">
-                <label class="govuk-label govuk-radios__label" for="permit-type-a10">
-                  A10
-                </label>
-                <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-                  To use any CITES annex A specimen for commercial purposes.
-                </div>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="permit-type-other" name="permitType" type="radio" value="other">
-                <label class="govuk-label govuk-radios__label" for="permit-type-other">
-                  Other
-                </label>
-              </div>
-            </div>
+            <h2 class="govuk-heading-m">HOLDING PAGE</h2>
+            <p>Awaiting content</p>
           </fieldset>
         </div>
 
-            <!-- <div class="govuk-form-group">
-              <h2 class="govuk-heading-m">What type of permit are you applying for?</h2>
-              <label class="govuk-label" for="permit-type">
-                Choose a permit type
-              </label>
-            <select class="govuk-select" id="permit-type" name="permit-type" aria-describedby="permit-type-hint" value="{{data['permit-type']}}">
-                <option value="choose" selected>permit type</option>
-                <option value="Import">Import</option>
-                <option value="Export">Export</option>
-                <option value="Re-export">Re-export</option>
-                <option value="A10">A10</option>
-              </select>
-            </div> -->
-
-            <div class="govuk-form-group">
-              <h2 class="govuk-heading-m">What will you use the permit for?</h2>
-              <select class="govuk-select" id="permit-purpose-code" name="permit-purpose-code" aria-describedby="permit-purpose-code-hint">
-                <option value="choose" selected>Choose a purpose code</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="E">E</option>
-                <option value="F">F</option>
-                <option value="G">G</option>
-                <option value="H">H</option>
-                <option value="I">I</option>
-                <option value="J">J</option>
-                <option value="K">K</option>
-                <option value="L">L</option>
-              </select>
-            </div>
-
-            <div class="govuk-form-group">
-            <details class="govuk-details" data-module="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  Show me a description for each purpose code
-                </span>
-              </summary>
-              <div>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">A</p>
-                <p>Breeding in captivity for artificial propagation</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">B</p>
-                <p>Education</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">C</p>
-                <p>Biotanical gardens</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">D</p>
-                <p>Hunting trophies</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">E</p>
-                <p>Enforcement</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">F</p>
-                <p>Bio-medical research</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">G</p>
-                <p>Reintroduction or introduction into the wild</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">H</p>
-                <p>Personal</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">I</p>
-                <p>Circuses and travelling exhibitions</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">J</p>
-                <p>Scientific</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">K</p>
-                <p>Commercial</p>
-                <hr>
-                <p class="govuk-body govuk-!-margin-bottom-0 govuk-body govuk-!-font-weight-bold">L</p>
-                <p>Zoo</p>
-                <hr>
-              </div>
-            </details>
-          </div>
 
         <button class="govuk-button">Continue</button>
     </form>

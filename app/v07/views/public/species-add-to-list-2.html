@@ -83,12 +83,40 @@
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">1</th>
                     <td class="govuk-table__cell">{{data['species-name-1']}}</td>
+                    <td class="govuk-table__cell"><label class="govuk-label">Quantity</label><input class="govuk-input govuk-input--width-3" id="being-moved" name="total-being-moved" type="text" value="{{data['total-being-moved']}}" /></td>
+                    <td class="govuk-table__cell">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="sort">
+                          Unit of measure
+                        </label>
+                        <select class="govuk-select" id="sort" name="sort">
+                          <option value="unit-1">Cm3</option>
+                          <option value="unit-2">g</option>
+                          <option value="unit-3" selected>Kg</option>
+                          <option value="unit-4">I</option>
+                        </select>
+                      </div>
+                  </td>
                     <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1?species-name-1={{data['species-name-2']}}">Remove</a></td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">2</th>
                     <td class="govuk-table__cell">{{data['species-name-2']}}</td>
-                    <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1">Remove</a></td>
+                    <td class="govuk-table__cell"><label class="govuk-label">Quantity</label><input class="govuk-input govuk-input--width-3" id="being-moved" name="total-being-moved" type="text" value="{{data['total-being-moved']}}" /></td>
+                    <td class="govuk-table__cell">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="sort">
+                          Unit of measure
+                        </label>
+                        <select class="govuk-select" id="sort" name="sort">
+                          <option value="unit-1">Cm3</option>
+                          <option value="unit-2">g</option>
+                          <option value="unit-3" selected>Kg</option>
+                          <option value="unit-4">I</option>
+                        </select>
+                      </div>
+                  </td>
+                    <td class="govuk-table__cell govuk-!-text-align-right"><a href="species-add-to-list-1?species-name-1={{data['species-name-1']}}">Remove</a></td>
                   </tr>
                 </tbody>
               </table>

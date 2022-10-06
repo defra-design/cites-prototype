@@ -22,6 +22,127 @@ function logger (req, msg) {
 
 //*************  Start of v07 additions *************//
 
+// Are you applying on behalf of someone else?
+router.get('/are-you-applying-on-behalf-of-someone-else', function (req, res) {
+  res.render(viewsFolder + 'are-you-applying-on-behalf-of-someone-else')
+})
+
+router.post('/are-you-applying-on-behalf-of-someone-else', function (req, res) {
+if (req.session.data['isAgent'] == 'yes') {
+  res.redirect('enter-your-contact-details-agent')
+} else {
+  res.redirect('enter-your-contact-details-applicant')
+}
+})
+
+// Add to list GDS
+router.get('/add-to-list-gds', function (req, res) {
+  res.render(viewsFolder + 'add-to-list-gds')
+})
+
+router.post('/add-to-list-gds', function (req, res) {
+  let specimenInput = req.session.data['specimenInput']
+  res.redirect('#')
+})
+
+// Add a species
+router.get('/add-a-species', function (req, res) {
+  res.render(viewsFolder + 'add-a-species')
+})
+
+router.post('/add-a-species', function (req, res) {
+  res.redirect('add-a-species-added')
+})
+
+// Add a species added
+router.get('/add-a-species-added', function (req, res) {
+  res.render(viewsFolder + 'add-a-species-added')
+})
+
+router.post('/add-a-species-added', function (req, res) {
+  res.redirect('where-did-you-source-your-specimen-from')
+})
+
+// Agent contact details
+router.get('/agent-contact-details', function (req, res) {
+  res.render(viewsFolder + 'agent-contact-details')
+})
+
+router.post('/agent-contact-details', function (req, res) {
+  res.redirect('what-is-your-address')
+})
+
+// Add any other information
+router.get('/add-any-other-information', function (req, res) {
+  res.render(viewsFolder + 'add-any-other-information')
+})
+
+router.post('/add-any-other-information', function (req, res) {
+  req.session.data['currentSpecimenCount'] = (req.session.data['specimenCount'] + 1)
+  if (req.session.data['specimenCount'] == req.session.data['totalSpecimens1']) {
+    res.redirect('file-upload')
+  } else {
+  // req.session.data['specimenCount'] = req.session.data['specimenCount'] + 1
+  res.redirect('cya')
+}
+})
+
+// Add to list
+router.get('/add-to-list', function (req, res) {
+  res.render(viewsFolder + 'add-to-list')
+})
+
+router.post('/add-to-list', function (req, res) {
+  res.redirect('#')
+})
+
+// Application complete
+router.get('/application-complete', function (req, res) {
+  res.render(viewsFolder + 'application-complete')
+})
+
+router.post('/application-complete', function (req, res) {
+  res.redirect('#')
+})
+
+// Are you sending the specimen to someone else?
+router.get('/are-you-sending-the-specimen-to-someone-else', function (req, res) {
+  res.render(viewsFolder + 'are-you-sending-the-specimen-to-someone-else')
+})
+
+router.post('/are-you-sending-the-specimen-to-someone-else', function (req, res) {
+  let permitType = req.session.data['permitType']
+  let sendingToSomeoneElse = req.session.data['sendingToSomeoneElse']
+  let isAlive = req.session.data['isAlive']
+
+  if (permitType === 'export') {
+        res.redirect('who-is-importing-the-specimen')
+    }
+
+
+  if (permitType === 're-export') {
+    if (sendingToSomeoneElse === 'yes') {
+        res.redirect('who-is-importing-the-specimen')
+      }
+    }
+
+    if (permitType === 're-export') {
+      if (sendingToSomeoneElse === 'no') {
+        if (isAlive === 'alive') {
+          res.redirect('where-will-you-keep-your-specimen')
+        }
+      }
+    }
+
+  if (permitType === 're-export') {
+    if (sendingToSomeoneElse === 'no') {
+      if (isAlive === 'dead') {
+        res.redirect('where-is-the-specimens-country-of-origin')
+      }
+    }
+  }
+})
+
 // Contact details
 router.get('/contact-details', function (req, res) {
   res.render(viewsFolder + 'contact-details')
@@ -37,7 +158,7 @@ router.get('/permit-details', function (req, res) {
 })
 
 router.post('/permit-details', function (req, res) {
-  res.redirect('species-add-to-list-0')
+  res.redirect('add-any-other-information')
 })
 
 // Specimen details
@@ -46,7 +167,7 @@ router.get('/specimen-details', function (req, res) {
 })
 
 router.post('/specimen-details', function (req, res) {
-  res.redirect('specimen-history')
+  res.redirect('permit-details')
 })
 
 // Specimen history
@@ -75,16 +196,6 @@ router.post('/check-your-answers-new', function (req, res) {
 
 //*************  End of v07 additions *************//
 
-
-// Add to list GDS
-router.get('/add-to-list-gds', function (req, res) {
-  res.render(viewsFolder + 'add-to-list-gds')
-})
-
-router.post('/add-to-list-gds', function (req, res) {
-  let specimenInput = req.session.data['specimenInput']
-  res.redirect('#')
-})
 
 
 // Species add to list 0
@@ -181,76 +292,6 @@ router.post('/parameters', function (req, res) {
   res.redirect('#')
 })
 
-// Add any other information
-router.get('/add-any-other-information', function (req, res) {
-  res.render(viewsFolder + 'add-any-other-information')
-})
-
-router.post('/add-any-other-information', function (req, res) {
-  req.session.data['currentSpecimenCount'] = (req.session.data['specimenCount'] + 1)
-  if (req.session.data['specimenCount'] == req.session.data['totalSpecimens1']) {
-    res.redirect('check-your-answers')
-  } else {
-  // req.session.data['specimenCount'] = req.session.data['specimenCount'] + 1
-  res.redirect('cya')
-}
-})
-
-// Add to list
-router.get('/add-to-list', function (req, res) {
-  res.render(viewsFolder + 'add-to-list')
-})
-
-router.post('/add-to-list', function (req, res) {
-  res.redirect('#')
-})
-
-// Application complete
-router.get('/application-complete', function (req, res) {
-  res.render(viewsFolder + 'application-complete')
-})
-
-router.post('/application-complete', function (req, res) {
-  res.redirect('#')
-})
-
-// Are you sending the specimen to someone else?
-router.get('/are-you-sending-the-specimen-to-someone-else', function (req, res) {
-  res.render(viewsFolder + 'are-you-sending-the-specimen-to-someone-else')
-})
-
-router.post('/are-you-sending-the-specimen-to-someone-else', function (req, res) {
-  let permitType = req.session.data['permitType']
-  let sendingToSomeoneElse = req.session.data['sendingToSomeoneElse']
-  let isAlive = req.session.data['isAlive']
-
-  if (permitType === 'export') {
-        res.redirect('who-is-importing-the-specimen')
-    }
-
-
-  if (permitType === 're-export') {
-    if (sendingToSomeoneElse === 'yes') {
-        res.redirect('who-is-importing-the-specimen')
-      }
-    }
-
-    if (permitType === 're-export') {
-      if (sendingToSomeoneElse === 'no') {
-        if (isAlive === 'alive') {
-          res.redirect('where-will-you-keep-your-specimen')
-        }
-      }
-    }
-
-  if (permitType === 're-export') {
-    if (sendingToSomeoneElse === 'no') {
-      if (isAlive === 'dead') {
-        res.redirect('where-is-the-specimens-country-of-origin')
-      }
-    }
-  }
-})
 
 // Check your answers
 router.get('/check-your-answers', function (req, res) {
@@ -262,7 +303,7 @@ router.post('/check-your-answers', function (req, res) {
   req.session.data['specimenCount'] = 1
 
     if (req.session.data['speciesCount'] == req.session.data['noOfSpecies']) {
-      res.redirect('file-upload')
+      res.redirect('permit-preview')
   } else {
       req.session.data['speciesCount'] = req.session.data['speciesCount'] + 1
       req.session.data['totalSpecimens1'] = ''
@@ -285,22 +326,69 @@ if (req.session.data['useDetails'] === 'yes-one') {
     res.redirect('check-your-answers')
   } else if (req.session.data['useDetails'] === 'no-none') {
     req.session.data['specimenCount'] = req.session.data['specimenCount'] + 1
-    res.redirect('description-dynamic')
+    res.redirect('specimen-details')
 } else {
   req.session.data['specimenCount'] = req.session.data['specimenCount'] + 1
-  res.redirect('description-dynamic')
+  res.redirect('specimen-details')
 }
 })
 
-// Confirm your address
-router.get('/confirm-your-address', function (req, res) {
-  res.render(viewsFolder + 'confirm-your-address')
+// Confirm the address applicant
+router.get('/confirm-the-address-applicant', function (req, res) {
+  res.render(viewsFolder + 'confirm-the-address-applicant')
 })
 
-router.post('/confirm-your-address', function (req, res) {
-  res.redirect('what-type-of-permit-or-certificate-are-you-applying-for')
+router.post('/confirm-the-address-applicant', function (req, res) {
+  if (req.session.data['isAgent'] === 'yes') {
+    res.redirect('enter-applicant-contact-details')
+} else {
+  res.redirect('species-add-to-list-0')
+}
 })
 
+// Confirm your address - agent
+router.get('/confirm-your-address-agent', function (req, res) {
+  res.render(viewsFolder + 'confirm-your-address-agent')
+})
+
+router.post('/confirm-your-address-agent', function (req, res) {
+  res.redirect('enter-contact-details-applicant')
+})
+
+// Confirm your address - applicant
+router.get('/confirm-your-address-applicant', function (req, res) {
+  res.render(viewsFolder + 'confirm-your-address-applicant')
+})
+
+router.post('/confirm-your-address-applicant', function (req, res) {
+  if (req.session.data['address'] == 'address-2') {
+    res.redirect('enter-delivery-address')
+  } else {
+    res.redirect('species-add-to-list-0')
+  }
+  })
+
+// Confirm delivery address
+router.get('/confirm-delivery-address', function (req, res) {
+  res.render(viewsFolder + 'confirm-delivery-address')
+})
+
+router.post('/confirm-delivery-address', function (req, res) {
+  res.redirect('species-add-to-list-0')
+})
+
+// Confirm your address - agent led
+router.get('/confirm-your-address-agent-led', function (req, res) {
+  res.render(viewsFolder + 'confirm-your-address-agent-led')
+})
+
+router.post('/confirm-your-address-agent-led', function (req, res) {
+  if (req.session.data['delivery-address'] == 'delivery-address-3') {
+    res.redirect('enter-delivery-address')
+  } else {
+    res.redirect('species-add-to-list-0')
+  }
+  })
 
 // Confirm you have the owner's consent
 router.get('/confirm-you-have-the-owners-consent', function (req, res) {
@@ -311,17 +399,44 @@ router.post('/confirm-you-have-the-owners-consent', function (req, res) {
   res.redirect('enter-the-owners-contact-details')
 })
 
-// Confirm owner address
-router.get('/confirm-owner-address', function (req, res) {
-  res.render(viewsFolder + 'confirm-owner-address')
+// Enter applicant contact details
+router.get('/enter-applicant-contact-details', function (req, res) {
+  res.render(viewsFolder + 'enter-applicant-contact-details')
 })
 
-router.post('/confirm-owner-address', function (req, res) {
+router.post('/enter-applicant-contact-details', function (req, res) {
+  res.redirect('what-is-your-address')
+})
+
+// Enter your contact details (agent)
+router.get('/enter-your-contact-details-agent', function (req, res) {
+  res.render(viewsFolder + 'enter-your-contact-details-agent')
+})
+
+router.post('/enter-your-contact-details-agent', function (req, res) {
+  res.redirect('what-is-your-address-agent')
+})
+
+// Enter your contact details applicant
+router.get('/enter-your-contact-details-applicant', function (req, res) {
+  res.render(viewsFolder + 'enter-your-contact-details-applicant')
+})
+
+router.post('/enter-your-contact-details-applicant', function (req, res) {
+  res.redirect('what-is-your-address-applicant')
+})
+
+// Confirm applicants address
+router.get('/confirm-applicants-address', function (req, res) {
+  res.render(viewsFolder + 'confirm-applicants-address')
+})
+
+router.post('/confirm-applicants-address', function (req, res) {
   // let isAgent = req.session.data['isAgent']
 if (req.session.data['isAgent'] == 'no') {
   res.redirect('what-type-of-permit-or-certificate-are-you-applying-for')
 } else {
-  res.redirect('enter-proxy-contact-details')
+  res.redirect('enter-your-contact-details-agent')
 }
 })
 
@@ -491,13 +606,13 @@ router.post('/describe-the-specimen', function (req, res) {
   res.redirect('enter-the-quantity')
 })
 
-// Are you applying on behalf of someone else?
-router.get('/are-you-applying-on-behalf-of-someone-else', function (req, res) {
-  res.render(viewsFolder + 'are-you-applying-on-behalf-of-someone-else')
+// Do you know what to pay
+router.get('/do-you-know-what-to-pay', function (req, res) {
+  res.render(viewsFolder + 'do-you-know-what-to-pay')
 })
 
-router.post('/are-you-applying-on-behalf-of-someone-else', function (req, res) {
-  res.redirect('enter-your-contact-details')
+router.post('/do-you-know-what-to-pay', function (req, res) {
+  res.redirect('#')
 })
 
 
@@ -532,14 +647,14 @@ router.post('/do-you-know-the-trade-term-code', function (req, res) {
       }
 })
 
-// Enter the owner's contact details
-router.get('/enter-the-owners-contact-details', function (req, res) {
-  res.render(viewsFolder + 'enter-the-owners-contact-details')
-})
-
-router.post('/enter-the-owners-contact-details', function (req, res) {
-  res.redirect('whats-the-owners-address')
-})
+// // // Enter the owner's contact details
+// // router.get('/enter-the-owners-contact-details', function (req, res) {
+// //   res.render(viewsFolder + 'enter-the-owners-contact-details')
+// // })
+//
+// router.post('/enter-the-owners-contact-details', function (req, res) {
+//   res.redirect('whats-the-owners-address')
+// })
 
 // Enter the quantity
 router.get('/enter-the-quantity', function (req, res) {
@@ -559,13 +674,49 @@ router.post('/enter-proxy-contact-details', function (req, res) {
   res.redirect('what-is-your-proxy-address')
 })
 
-// Enter your contact details
-router.get('/enter-your-contact-details', function (req, res) {
-  res.render(viewsFolder + 'enter-your-contact-details')
+// Enter contact details applicant
+router.get('/enter-contact-details-applicant', function (req, res) {
+  res.render(viewsFolder + 'enter-contact-details-applicant')
 })
 
-router.post('/enter-your-contact-details', function (req, res) {
-  res.redirect('what-is-your-address')
+router.post('/enter-contact-details-applicant', function (req, res) {
+  res.redirect('what-is-your-address-agent-led')
+})
+
+// Enter delivery address
+router.get('/enter-delivery-address', function (req, res) {
+  res.render(viewsFolder + 'enter-delivery-address')
+})
+
+router.post('/enter-delivery-address', function (req, res) {
+  res.redirect('confirm-delivery-address')
+})
+
+// Enter your address manually - agent
+router.get('/enter-your-address-manually-agent', function (req, res) {
+  res.render(viewsFolder + 'enter-your-address-manually-agent')
+})
+
+router.post('/enter-your-address-manually-agent', function (req, res) {
+  res.redirect('confirm-your-address-agent')
+})
+
+// Enter your address manually - applicant
+router.get('/enter-your-address-manually-applicant', function (req, res) {
+  res.render(viewsFolder + 'enter-your-address-manually-applicant')
+})
+
+router.post('/enter-your-address-manually-applicant', function (req, res) {
+  res.redirect('confirm-your-address-applicant')
+})
+
+// Enter your address manually - agent led
+router.get('/enter-your-address-manually-agent-led', function (req, res) {
+  res.render(viewsFolder + 'enter-your-address-manually-agent-led')
+})
+
+router.post('/enter-your-address-manually-agent-led', function (req, res) {
+  res.redirect('confirm-your-address-agent-led')
 })
 
 // File upload
@@ -574,7 +725,7 @@ router.get('/file-upload', function (req, res) {
 })
 
 router.post('/file-upload', function (req, res) {
-  res.redirect('preview-applications')
+  res.redirect('check-your-answers')
 })
 
 // Find address
@@ -718,13 +869,40 @@ router.post('/is-this-the-only-time-the-specimen-has-moved-from-its-country-of-o
     res.render(viewsFolder + 'start')
   })
 
-  // Search for owner address
-  router.get('/search-for-owner-address', function (req, res) {
-    res.render(viewsFolder + 'search-for-owner-address')
+  // Search for applicant's address
+  router.get('/search-for-applicants-address', function (req, res) {
+    res.render(viewsFolder + 'search-for-applicants-address')
   })
 
-  router.post('/search-for-owner-address', function (req, res) {
-    res.redirect('select-owner-address')
+  router.post('/search-for-applicants-address', function (req, res) {
+    res.redirect('select-applicants-address')
+  })
+
+  // Search for your address - agent
+  router.get('/search-for-your-address-agent', function (req, res) {
+    res.render(viewsFolder + 'search-for-your-address-agent')
+  })
+
+  router.post('/search-for-your-address-agent', function (req, res) {
+    res.redirect('select-your-address-agent')
+  })
+
+  // Search for your address - applicant
+  router.get('/search-for-your-address-applicant', function (req, res) {
+    res.render(viewsFolder + 'search-for-your-address-applicant')
+  })
+
+  router.post('/search-for-your-address-applicant', function (req, res) {
+    res.redirect('select-your-address-applicant')
+  })
+
+  // Search for your address - agent led
+  router.get('/search-for-your-address-agent-led', function (req, res) {
+    res.render(viewsFolder + 'search-for-your-address-agent-led')
+  })
+
+  router.post('/search-for-your-address-agent-led', function (req, res) {
+    res.redirect('select-your-address-agent-led')
   })
 
   // Enter the owner's address
@@ -736,50 +914,104 @@ router.post('/is-this-the-only-time-the-specimen-has-moved-from-its-country-of-o
     res.redirect('select-owner-address')
   })
 
-  // Enter the owner's international address
-  router.get('/enter-the-owners-international-address', function (req, res) {
-    res.render(viewsFolder + 'enter-the-owners-international-address')
+  // Enter the applicant's international address
+  router.get('/enter-the-applicants-international-address', function (req, res) {
+    res.render(viewsFolder + 'enter-the-applicants-international-address')
   })
 
-  router.post('/enter-the-owners-international-address', function (req, res) {
-    res.redirect('confirm-owner-international-address')
+  router.post('/enter-the-applicants-international-address', function (req, res) {
+    res.redirect('confirm-applicants-international-address')
+  })
+
+  // Enter an international address
+  router.get('/enter-an-international-address', function (req, res) {
+    res.render(viewsFolder + 'enter-an-international-address')
+  })
+
+  router.post('/enter-an-international-address', function (req, res) {
+    res.redirect('confirm-applicants-international-address')
   })
 
   // Confirm owner international address
-  router.get('/confirm-owner-international-address', function (req, res) {
-    res.render(viewsFolder + 'confirm-owner-international-address')
+  router.get('/confirm-applicants-international-address', function (req, res) {
+    res.render(viewsFolder + 'confirm-applicants-international-address')
   })
 
-  router.post('/confirm-owner-international-address', function (req, res) {
-    res.redirect('enter-proxy-contact-details')
+  router.post('/confirm-applicants-international-address', function (req, res) {
+    res.redirect('species-add-to-list-0')
   })
 
-  // Preview
-  // router.get('/preview-applications', function (req, res) {
-  //   res.render(viewsFolder + 'preview-applications')
-  // })
-  //
-  // router.post('/preview-applications', function (req, res) {
-  //   res.redirect('application-completed')
-  // })
-
-
-// Select your address
-  router.get('/select-your-address', function (req, res) {
-    res.render(viewsFolder + 'select-your-address')
+  // Permit preview
+  router.get('/permit-preview', function (req, res) {
+    res.render(viewsFolder + 'permit-preview')
   })
 
-  router.post('/select-your-address', function (req, res) {
-    res.redirect('confirm-your-address')
+  router.post('/permit-preview', function (req, res) {
+    res.redirect('do-you-know-what-to-pay')
   })
 
-// Select owners address
-  router.get('/select-owner-address', function (req, res) {
-    res.render(viewsFolder + 'select-owner-address')
+  // Permit 1
+  router.get('/permit-1', function (req, res) {
+    res.render(viewsFolder + 'permit-1')
   })
 
-  router.post('/select-owner-address', function (req, res) {
-    res.redirect('confirm-owner-address')
+  router.post('/permit-1', function (req, res) {
+    res.redirect('#')
+  })
+
+  // Permit 2
+  router.get('/permit-2', function (req, res) {
+    res.render(viewsFolder + 'permit-2')
+  })
+
+  router.post('/permit-2', function (req, res) {
+    res.redirect('#')
+  })
+
+
+  // Select an address
+    router.get('/select-an-address', function (req, res) {
+      res.render(viewsFolder + 'select-an-address')
+    })
+
+    router.post('/select-an-address', function (req, res) {
+      res.redirect('confirm-the-address-applicant')
+    })
+
+    // Select your address - agent
+      router.get('/select-your-address-agent', function (req, res) {
+        res.render(viewsFolder + 'select-your-address-agent')
+      })
+
+      router.post('/select-your-address-agent', function (req, res) {
+        res.redirect('confirm-your-address-agent')
+      })
+
+      // Select your address - applicant
+        router.get('/select-your-address-applicant', function (req, res) {
+          res.render(viewsFolder + 'select-your-address-applicant')
+        })
+
+        router.post('/select-your-address-applicant', function (req, res) {
+          res.redirect('confirm-your-address-applicant')
+        })
+
+  // Select your address - agent led
+    router.get('/select-your-address-agent-led', function (req, res) {
+      res.render(viewsFolder + 'select-your-address-agent-led')
+    })
+
+    router.post('/select-your-address-agent-led', function (req, res) {
+      res.redirect('confirm-your-address-agent-led')
+    })
+
+// Select applicants address
+  router.get('/select-applicants-address', function (req, res) {
+    res.render(viewsFolder + 'select-applicants-address')
+  })
+
+  router.post('/select-applicants-address', function (req, res) {
+    res.redirect('confirm-applicants-address')
   })
 
 // Tell us about the specimen's country of origin export permit
@@ -889,13 +1121,13 @@ router.post('/what-is-the-last-re-export-certificate-number', function (req, res
 
 })
 
-// What will you use the certificate for
-router.get('/what-will-you-use-the-certificate-for', function (req, res) {
-  res.render(viewsFolder + 'what-will-you-use-the-certificate-for')
+// What is the applicant's address
+router.get('/what-is-the-applicants-address', function (req, res) {
+  res.render(viewsFolder + 'what-is-the-applicants-address')
 })
 
-router.post('/what-will-you-use-the-certificate-for', function (req, res) {
-  res.redirect('are-you-applying-on-behalf-of-someone-else')
+router.post('/what-is-the-applicants-address', function (req, res) {
+  res.redirect('select-applicants-address')
 })
 
 
@@ -905,7 +1137,34 @@ router.get('/what-is-your-address', function (req, res) {
 })
 
 router.post('/what-is-your-address', function (req, res) {
-  res.redirect('select-your-address')
+  res.redirect('select-an-address')
+})
+
+// What is your address - agent
+router.get('/what-is-your-address-agent', function (req, res) {
+  res.render(viewsFolder + 'what-is-your-address-agent')
+})
+
+router.post('/what-is-your-address-agent', function (req, res) {
+  res.redirect('select-your-address-agent')
+})
+
+// What is your address - applicant
+router.get('/what-is-your-address-applicant', function (req, res) {
+  res.render(viewsFolder + 'what-is-your-address-applicant')
+})
+
+router.post('/what-is-your-address-applicant', function (req, res) {
+  res.redirect('select-your-address-applicant')
+})
+
+// What is your address - agent led
+router.get('/what-is-your-address-agent-led', function (req, res) {
+  res.render(viewsFolder + 'what-is-your-address-agent-led')
+})
+
+router.post('/what-is-your-address-agent-led', function (req, res) {
+  res.redirect('select-your-address-agent-led')
 })
 
 // What will you use your permit for?
@@ -914,11 +1173,12 @@ router.get('/what-will-you-use-your-permit-for', function (req, res) {
 })
 
 router.post('/what-will-you-use-your-permit-for', function (req, res) {
-  if (req.session.data['specimen'] == 'Coral') {
-    res.redirect('description-dynamic')
-  } else {
-  res.redirect('is-this-specimen-alive')
-}
+  res.redirect('specimen-details')
+// if (req.session.data['specimen'] == 'Coral') {
+//   res.redirect('description-dynamic')
+// } else {
+// res.redirect('is-this-specimen-alive')
+// }
 })
 
 // What type of permit or certificate are you applying for?
@@ -944,6 +1204,16 @@ router.post('/what-type-of-permit-or-certificate-are-you-applying-for', function
     res.redirect('you-cannot-use-this-service-yet')
   }
 })
+
+// What will you use the certificate for
+router.get('/what-will-you-use-the-certificate-for', function (req, res) {
+  res.render(viewsFolder + 'what-will-you-use-the-certificate-for')
+})
+
+router.post('/what-will-you-use-the-certificate-for', function (req, res) {
+  res.redirect('are-you-applying-on-behalf-of-someone-else')
+})
+
 
 // When was the specimen's hatch date
 router.get('/when-was-the-specimens-hatch-date', function (req, res) {
@@ -1104,17 +1374,6 @@ router.post('/who-is-importing-the-specimen', function (req, res) {
     }
 
   })
-
-
-
-// What's the owner's address
-router.get('/whats-the-owners-address', function (req, res) {
-  res.render(viewsFolder + 'whats-the-owners-address')
-})
-
-router.post('/whats-the-owners-address', function (req, res) {
-  res.redirect('select-owner-address')
-})
 
 
 // Confirm proxy international address
