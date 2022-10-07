@@ -16,8 +16,8 @@ router.get('/', function (req, res) {
 // router.use('/v05-3', require('./v05-3/routes/routes'))
 // router.use('/v06', require('./v06/routes/routes'))
 router.use('/v07', require('./v07/routes/routes'))
-router.use('/v07-A', require('./v07-A/routes/routes'))
-router.use('/v07-B', require('./v07-B/routes/routes'))
+// router.use('/v07-A', require('./v07-A/routes/routes'))
+// router.use('/v07-B', require('./v07-B/routes/routes'))
 
 
 

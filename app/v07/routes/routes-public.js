@@ -31,7 +31,7 @@ router.post('/are-you-applying-on-behalf-of-someone-else', function (req, res) {
 if (req.session.data['isAgent'] == 'yes') {
   res.redirect('enter-your-contact-details-agent')
 } else {
-  res.redirect('../public/enter-your-contact-details-applicant')
+  res.redirect('./enter-your-contact-details-applicant')
 }
 })
 
